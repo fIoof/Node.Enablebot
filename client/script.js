@@ -102,8 +102,8 @@ form.addEventListener('keyup',(e) => {
         handleSubmit(e);
     }
 })
-function copyToClipBoard(){
-    var copyText = response
+// function copyToClipBoard(){
+//     var copyText = response
 
-}
+// }
 console.log(response)
