@@ -6,7 +6,7 @@ const chatContainer = document.querySelector('#chat_container');
 
 let loadInterval;
 
-function loader(element){
+function loader(element){// Loading dots
     element.textContent = '';
 
     loadInterval = setInterval(() => {
@@ -17,7 +17,7 @@ function loader(element){
     },300)
 
 }
-function typeText(element,text){
+function typeText(element,text){//
     let index = 0;
 
     let interval = setInterval(() => {
@@ -102,3 +102,8 @@ form.addEventListener('keyup',(e) => {
         handleSubmit(e);
     }
 })
+function copyToClipBoard(){
+    var copyText = response
+
+}
+console.log(response)
