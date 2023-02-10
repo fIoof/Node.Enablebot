@@ -11,8 +11,8 @@ const openai = new OpenAIApi(configuration);
 
 const app = express();
 app.use(cors()); //allows us to make a call from the front end
-app.use(express.json());
-app.get('/', async (req, res) =>{
+app.use(express.json()); //allows us to parse JSON from the front end to the backend
+app.get('/', async (req, res) =>{ //dummy route route
     res.status(200).send({
         message: 'Hello from Enablebot',
     })
@@ -21,19 +21,19 @@ app.get('/', async (req, res) =>{
 app.post('/', async (req, res) => {
     try{
         const prompt = req.body.prompt;
-        const response = await openai.createCompletion({
+        const response = await openai.createCompletion({  //a function that accepts an object
             model: "text-davinci-003",
             prompt: `${prompt}`,
-            temperature: 0,
+            temperature: 0, //means the risk of response 0 being no risk of going beyond what it knows 10 could be a very random and uneducated
             max_tokens: 4000,
             top_p: 1,
             frequency_penalty: 0.5,
             presence_penalty: 0,
         });
-        res.status(200).send({
+        res.status(200).send({ //sends data back to the frontend
             bot: response.data.choices[0].text
         })
-    } catch (error){
+    } catch (error){ //catches errors if response takes longer than timer
     console.log(error);
     res.status(500).send({error})
     }
