@@ -87,7 +87,6 @@ const handleSubmit = async (e) => {
     messageDiv.innerHTML = ''; //resets the message div to an empty string
     if(response.ok){
         const data = await response.json(); //this gives us the actual response from the backend
-        console.log(await response.json())
         const parsedData = data.bot.trim();
 
         typeText(messageDiv, parsedData);
