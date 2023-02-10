@@ -89,7 +89,7 @@ const handleSubmit = async (e) => {
         const data = await response.json(); //this gives us the actual
         const parsedData = data.bot.trim();
         console.log(parsedData)
-        typeText(messageDiv, parsedData);
+        typeText(messageDiv, parsedData); //ParsedData holds the CHatGPT reponse data
     } else{
         const err = await response.text();
 
