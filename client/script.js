@@ -88,7 +88,7 @@ const handleSubmit = async (e) => {
     if(response.ok){
         const data = await response.json(); //this gives us the actual
         const parsedData = data.bot.trim();
-
+        console.log(parsedData)
         typeText(messageDiv, parsedData);
     } else{
         const err = await response.text();
@@ -96,7 +96,6 @@ const handleSubmit = async (e) => {
         messageDiv.innerHTML = "Something went wrong";
         alert(err);
     }
-    console.log(parsedData)
 }
 form.addEventListener('submit', handleSubmit); //is a listener for a submit event
 form.addEventListener('keyup',(e) => { //listens for when we press the enter key
