@@ -42,7 +42,7 @@ function chatStripe(isAi, value, uniqueId) {
             <div class="chat">
                 <div class="profile">
                     <Img
-                        src="${isAi ? bot : user}"
+                        src="${isAi ? bot : user }"
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
@@ -52,6 +52,7 @@ function chatStripe(isAi, value, uniqueId) {
         
         `
     )
+    
 }
 
 const handleSubmit = async (e) => {
@@ -106,4 +107,3 @@ form.addEventListener('keyup',(e) => { //listens for when we press the enter key
 //     var copyText = response
 
 // }
-console.log(value)
