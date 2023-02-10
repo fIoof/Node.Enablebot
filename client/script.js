@@ -53,9 +53,9 @@ function chatStripe(isAi, value, uniqueId) {
         
         `
     )
-    console.log(value)
+    
 }
-
+console.log("hi")
 const handleSubmit = async (e) => {
     e.preventDefault();
 
