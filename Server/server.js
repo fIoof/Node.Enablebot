@@ -1,6 +1,6 @@
 import express from 'express'; //
-import * as dotenv from 'dotenv';
-import cors from 'cors'
+import * as dotenv from 'dotenv'; //allows us to get data from .env file
+import cors from 'cors' //allows us to make cross origin request
 import {Configuration, OpenAIApi} from 'openai'
 
 dotenv.config();
@@ -10,7 +10,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 const app = express();
-app.use(cors());
+app.use(cors()); //allows us to make a call from the front end
 app.use(express.json());
 app.get('/', async (req, res) =>{
     res.status(200).send({

@@ -36,9 +36,9 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
     return `id-${timestamp}-${hexadecimalString}`; //creates the random ID
 }
 function chatStripe(isAi, value, uniqueId) {
-    return (
+    return (             // checks if its ai
         `
-        <div class="wrapper ${isAi && 'ai' }"> // checks if its ai
+        <div class="wrapper ${isAi && 'ai' }"> 
             <div class="chat">
                 <div class="profile">
                     <Img
@@ -46,11 +46,11 @@ function chatStripe(isAi, value, uniqueId) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}  //this creates the message that is generated
+         <div class="message" id=${uniqueId}>${value}  
          </div>          
         </div>
         
-        `
+        ` //this creates the message that is generated
     )
     
 }
