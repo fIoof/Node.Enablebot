@@ -80,13 +80,14 @@ const handleSubmit = async (e) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            prompt: data.get('prompt')
+            prompt: data.get('prompt') //this is where the data with the message
         })
     })
     clearInterval(loadInterval)
-    messageDiv.innerHTML = '';
+    messageDiv.innerHTML = ''; //resets the message div to an empty string
     if(response.ok){
-        const data = await response.json();
+        const data = await response.json(); //this gives us the actual response from the backend
+        console.log(response.json())
         const parsedData = data.bot.trim();
 
         typeText(messageDiv, parsedData);
