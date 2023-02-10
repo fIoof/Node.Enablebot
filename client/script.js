@@ -1,5 +1,6 @@
 import bot from './assets/bot.png';
 import user from './assets/user.svg';
+import copy from '/assets/copy-solid.svg'
 
 const form = document.querySelector('form');
 const chatContainer = document.querySelector('#chat_container');
@@ -46,7 +47,7 @@ function chatStripe(isAi, value, uniqueId) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}
+         <div class="message" id=${uniqueId}>${value} 
          </div>          
         </div>
         
@@ -106,4 +107,4 @@ form.addEventListener('keyup',(e) => {
 //     var copyText = response
 
 // }
-console.log(uniqueId)
+console.log(value)
