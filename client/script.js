@@ -53,6 +53,7 @@ function chatStripe(isAi, value, uniqueId) {
         
         `
     )
+    console.log(value)
 }
 
 const handleSubmit = async (e) => {
@@ -107,4 +108,3 @@ form.addEventListener('keyup',(e) => {
 //     var copyText = response
 
 // }
-console.log(value)
