@@ -1,24 +1,23 @@
-import bot from './assets/bot.png';
+import bot from './assets/bot.png'; //Imports Icons for us to use
 import user from './assets/user.svg';
-import copy from '/assets/copy-solid.svg'
 
-const form = document.querySelector('form');
-const chatContainer = document.querySelector('#chat_container');
+const form = document.querySelector('form'); //targets HTML element it being the form
+const chatContainer = document.querySelector('#chat_container'); // selects the HTML element "chat_container"
 
 let loadInterval;
 
-function loader(element){// Loading dots
-    element.textContent = '';
+function loader(element){ // Loading dots when thinking about awnswer
+    element.textContent = ''; //ensures its empty at the start
 
     loadInterval = setInterval(() => {
         element.textContent += '.';
         if (element.textContent === '....') {
             element.textContent = '';
         }
-    },300)
+    },300) //every 300 miliseconds adds a dot 3 times and then clears the text
 
 }
-function typeText(element,text){//
+function typeText(element,text){ // this allows the response of the bot to type out slowly making it seem more human
     let index = 0;
 
     let interval = setInterval(() => {
@@ -29,17 +28,17 @@ function typeText(element,text){//
             clearInterval(interval)
     },20)
 }
-function generateUniqueId() {
+function generateUniqueId() { //Creates a unique ID for each bit of text
     const timestamp = Date.now();
     const randomNumber = Math.random();
     const hexadecimalString = randomNumber.toString(16);
 
-    return `id-${timestamp}-${hexadecimalString}`;
+    return `id-${timestamp}-${hexadecimalString}`; //creates the random ID
 }
 function chatStripe(isAi, value, uniqueId) {
     return (
         `
-        <div class="wrapper ${isAi && 'ai' }">
+        <div class="wrapper ${isAi && 'ai' }"> // checks if its ai
             <div class="chat">
                 <div class="profile">
                     <Img
@@ -47,7 +46,7 @@ function chatStripe(isAi, value, uniqueId) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value} 
+         <div class="message" id=${uniqueId}>${value}  //this creates the message that is generated
          </div>          
         </div>
         
@@ -56,21 +55,21 @@ function chatStripe(isAi, value, uniqueId) {
 }
 
 const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); //prevents the default behaviour of the browser
 
     const data = new FormData(form);
     // User's Chatstripe
-    chatContainer.innerHTML += chatStripe(false, data.get('prompt'));
+    chatContainer.innerHTML += chatStripe(false, data.get('prompt')); //if user passes the data from the form
 
-    form.reset();
+    form.reset(); // resets the data in the form so a new awnswer can be asked.
 
     //Bot's Chatstripe
     const uniqueId = generateUniqueId();
-    chatContainer.innerHTML += chatStripe(true, " ", uniqueId);
+    chatContainer.innerHTML += chatStripe(true, " ", uniqueId); // is empty as it is filling up as it is loading
 
-    chatContainer.scrollTop = chatContainer.scrollHeight;
+    chatContainer.scrollTop = chatContainer.scrollHeight; //this puts the message in view
 
-    const messageDiv = document.getElementById(uniqueId);
+    const messageDiv = document.getElementById(uniqueId); //this fetches the message via a unique ID
 
     loader(messageDiv);
     // fetch data from server -> bot's response
@@ -97,9 +96,9 @@ const handleSubmit = async (e) => {
         alert(err);
     }
 }
-form.addEventListener('submit', handleSubmit);
-form.addEventListener('keyup',(e) => {
-    if (e.keyCode === 13) {
+form.addEventListener('submit', handleSubmit); //is a listener for a submit event
+form.addEventListener('keyup',(e) => { //listens for when we press the enter key
+    if (e.keyCode === 13) { // 13 = Enter key
         handleSubmit(e);
     }
 })
