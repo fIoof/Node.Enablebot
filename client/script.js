@@ -96,6 +96,7 @@ const handleSubmit = async (e) => {
         messageDiv.innerHTML = "Something went wrong";
         alert(err);
     }
+    console.log(parsedData)
 }
 form.addEventListener('submit', handleSubmit); //is a listener for a submit event
 form.addEventListener('keyup',(e) => { //listens for when we press the enter key
