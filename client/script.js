@@ -90,6 +90,7 @@ const handleSubmit = async (e) => {
         const parsedData = data.bot.trim();
 
         typeText(messageDiv, parsedData);
+        console.log(parsedData)
     } else{
         const err = await response.text();
 
