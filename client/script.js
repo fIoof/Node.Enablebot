@@ -86,11 +86,10 @@ const handleSubmit = async (e) => {
     clearInterval(loadInterval)
     messageDiv.innerHTML = ''; //resets the message div to an empty string
     if(response.ok){
-        const data = await response.json(); //this gives us the actual response from the backend
+        const data = await response.json(); //this gives us the actual
         const parsedData = data.bot.trim();
 
         typeText(messageDiv, parsedData);
-        console.log(parsedData)
     } else{
         const err = await response.text();
 
