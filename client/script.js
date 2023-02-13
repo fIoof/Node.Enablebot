@@ -103,7 +103,7 @@ form.addEventListener('keyup',(e) => { //listens for when we press the enter key
         handleSubmit(e);
     }
 })
-// function copyToClipBoard(){
-//     var copyText = response
+function copyToClipBoard(){
+    var copyText = response
 
-// }
+}
