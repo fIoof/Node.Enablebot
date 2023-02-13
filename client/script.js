@@ -1,5 +1,6 @@
 import bot from './assets/bot.png'; //Imports Icons for us to use
 import user from './assets/user.svg';
+import copy from './assets/copy-solid.svg'
 
 const form = document.querySelector('form'); //targets HTML element it being the form
 const chatContainer = document.querySelector('#chat_container'); // selects the HTML element "chat_container"
@@ -46,8 +47,7 @@ function chatStripe(isAi, value, uniqueId) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}  
-         </div>          
+         <div class="message" id=${uniqueId}>${value}<img src"./assets/copy-solid.svg"</div>          
         </div>
         
         ` //this creates the message that is generated
