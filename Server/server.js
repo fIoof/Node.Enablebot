@@ -35,7 +35,7 @@ app.post('/', async (req, res) => {
         })
     } catch (error){ //catches errors if response takes longer than timer
     console.log(error);
-    res.status(500).send({error})
+    res.status(500).send({error},"Error please resolve")
     }
 })
 
