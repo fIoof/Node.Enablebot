@@ -1,6 +1,6 @@
 import bot from './assets/bot.png'; //Imports Icons for us to use
 import user from './assets/user.svg';
-import copy from './assets/copy-solid.svg'
+import copy from './assets/copy.svg';
 
 const form = document.querySelector('form'); //targets HTML element it being the form
 const chatContainer = document.querySelector('#chat_container'); // selects the HTML element "chat_container"
@@ -47,7 +47,7 @@ function chatStripe(isAi, value, uniqueId) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}<img src"./assets/copy-solid.svg"</div>          
+         <div class="message" id=${uniqueId}>${value}</div><img src="${user} alt ='copy'"/>       
         </div>
         
         ` //this creates the message that is generated
@@ -86,7 +86,7 @@ const handleSubmit = async (e) => {
     clearInterval(loadInterval)
     messageDiv.innerHTML = ''; //resets the message div to an empty string
     if(response.ok){
-        const data = await response.json(); //this gives us the actual
+        const data = await response.json(); //this gives us the actual response
         const parsedData = data.bot.trim();
         console.log(parsedData)
         typeText(messageDiv, parsedData); //ParsedData holds the CHatGPT reponse data
