@@ -34,7 +34,7 @@ app.post('/', async (req, res) => {
             bot: response.data.choices[0].text
         })
     } catch (error){ //catches errors if response takes longer than timer
-        res.status(500).send({error: "Opps something went wrong!"})
+        res.status({error : "something broke"})
     }
 })
 
