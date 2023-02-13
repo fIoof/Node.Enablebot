@@ -47,7 +47,7 @@ function chatStripe(isAi, value, uniqueId) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img src="${bot} alt ='copy'"/>       
+         <div class="message" id=${uniqueId}>${value}</div><img src="${user} alt ='copy'"/>       
         </div>
         
         ` //this creates the message that is generated
@@ -86,7 +86,7 @@ const handleSubmit = async (e) => {
     clearInterval(loadInterval)
     messageDiv.innerHTML = ''; //resets the message div to an empty string
     if(response.ok){
-        const data = await response.json(); //this gives us the actual
+        const data = await response.json(); //this gives us the actual response
         const parsedData = data.bot.trim();
         console.log(parsedData)
         typeText(messageDiv, parsedData); //ParsedData holds the CHatGPT reponse data
