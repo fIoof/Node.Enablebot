@@ -89,7 +89,7 @@ const handleSubmit = async (e) => {
         const data = await response.json(); //this gives us the actual response
         const parsedData = data.bot.trim();
 
-        typeText(messageDiv, parsedData); //ParsedData holds the CHatGPT reponse data
+        typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT reponse data
     } else{
         const err = await response.text();
 
@@ -105,7 +105,7 @@ form.addEventListener('keyup',(e) => { //listens for when we press the enter key
 })
 
 function copyToClipBoard(){
-    var copiedText = parsedData 
+    var copiedText = bot 
     copiedText.select();
     navigator.clipboard.writeText(copiedText.value)
 }
