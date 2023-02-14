@@ -47,7 +47,7 @@ function chatStripe(isAi, value, uniqueId) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" onclick=${copyToClipBoard()} src="${copy}"/>      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" onsubmit=${copyToClipBoard()} src="${copy}"/>      
         </div>
         
         ` //this creates the message that is generated
@@ -105,5 +105,7 @@ form.addEventListener('keyup',(e) => { //listens for when we press the enter key
 })
 
 function copyToClipBoard(){
-    navigator.clipboard.writeText(parsedData.value)
+    var copiedText = parsedData 
+    copiedText.select();
+    navigator.clipboard.writeText(copiedText.value)
 }
