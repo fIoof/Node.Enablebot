@@ -52,6 +52,10 @@ body {
 .ai {
   background: #8dd0f3;
 }
+.copy{
+  width: 30px;
+  height: 30px;
+}
 
 .chat {
   width: 100%;
