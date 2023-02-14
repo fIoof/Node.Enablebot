@@ -55,6 +55,11 @@ body {
 .copyimg {
   width: 30px;
   height: 30px;
+  
+}
+.copyimg:hover{
+  cursor: pointer;
+  opacity: 80%;
 }
 
 .chat {
