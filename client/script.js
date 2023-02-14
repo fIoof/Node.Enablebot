@@ -47,7 +47,7 @@ function chatStripe(isAi, value, uniqueId) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><button class="copyimg" onsubmit=${copyToClipBoard()} src="${copy}"/>      
+         <div class="message" id=${uniqueId}>${value}</div><button class="copyimg" onsubmit=${copyToClipBoard()} src="${copy}"><button/>      
         </div>
         
         ` //this creates the message that is generated
