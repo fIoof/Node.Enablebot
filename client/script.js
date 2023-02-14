@@ -106,6 +106,6 @@ form.addEventListener('keyup',(e) => { //listens for when we press the enter key
 
 function copyToClipBoard(){
     var copiedText = bot 
-    copiedText.select();
+    copiedText[0].select();
     navigator.clipboard.writeText(copiedText.value)
 }
