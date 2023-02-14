@@ -102,8 +102,8 @@ form.addEventListener('keyup',(e) => { //listens for when we press the enter key
         handleSubmit(e);
     }
 })
-function copyToClipBoard(){
-    var copiedText = document.getElementById('uniqueId').innerText
-    copiedText.select();
-    navigator.clipboard.writeText(copiedText.value)
-}
+//function copyToClipBoard(){
+   // var copiedText = document.getElementById('uniqueId').innerText
+   // copiedText.select();
+   // navigator.clipboard.writeText(copiedText.value)
+//}
