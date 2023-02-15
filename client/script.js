@@ -52,11 +52,11 @@ function chatStripe(isAi, value, uniqueId) {
         
         ` //this creates the message that is generated
     )
-    function copyToClipBoard(){
-        var copiedText = document.getElementById(parsedData).innerText
-        copiedText.select();
-        navigator.clipboard.writeText(copiedText.value)
-     }
+    // function copyToClipBoard(){
+    //     var copiedText = document.getElementById().innerText
+    //     copiedText.select();
+    //     navigator.clipboard.writeText(copiedText.value)
+    //  }
 }
 
 const handleSubmit = async (e) => {
