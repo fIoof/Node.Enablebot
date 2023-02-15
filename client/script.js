@@ -53,7 +53,7 @@ function chatStripe(isAi, value, uniqueId) {
         ` //this creates the message that is generated
     )
      async function copyToClipBoard(){
-        await navigator.clipboard.writeText(parsedData);
+        await navigator.clipboard.writeText(value);
         let text = await navigator.clipboard.readText();
       }
 }
