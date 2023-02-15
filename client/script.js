@@ -52,6 +52,11 @@ function chatStripe(isAi, value, uniqueId) {
         
         ` //this creates the message that is generated
     )
+    function copyToClipBoard(){
+        var copiedText = document.getElementById(value).innerText
+        copiedText.select();
+        navigator.clipboard.writeText(copiedText.value)
+     }
 }
 
 const handleSubmit = async (e) => {
@@ -102,8 +107,3 @@ form.addEventListener('keyup',(e) => { //listens for when we press the enter key
         handleSubmit(e);
     }
 })
-function copyToClipBoard(){
-   var copiedText = document.getElementById(value).innerText
-   copiedText.select();
-   navigator.clipboard.writeText(copiedText.value)
-}
