@@ -47,17 +47,17 @@ function chatStripe(isAi, value, uniqueId) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}"/>      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" onclick="copyToClipBoard()" src="${copy}"/>      
         </div>
         
         ` //this creates the message that is generated
     )
-    // function copyToClipBoard(){
-    //     var copiedText = document.getElementById().innerText
-    //     copiedText.select();
-    //     navigator.clipboard.writeText(copiedText.value)
-    //      onclick="${copyToClipBoard()}"
-    //  }
+     function copyToClipBoard(){
+        var copiedText = document.getElementById(uniqueId)
+        copiedText.select();
+        navigator.clipboard.writeText(copiedText.value)
+     
+      }
 }
 
 const handleSubmit = async (e) => {
