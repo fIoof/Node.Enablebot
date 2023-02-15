@@ -53,10 +53,9 @@ function chatStripe(isAi, value, uniqueId) {
         ` 
         //this creates the message that is generated
     )
-     async function copyToClipBoard(select,content){//copy to clipboard
-       const copiedText = select ? select.value || select.innerText : content;
+     async function copyToClipBoard(){//copy to clipboard
        try{//get text
-        await navigator.clipboard.writeText(copiedText)
+        await navigator.clipboard.writeText(`${value}`)
         return true;
        }
        catch(error){
