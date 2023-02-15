@@ -52,11 +52,9 @@ function chatStripe(isAi, value, uniqueId) {
         
         ` //this creates the message that is generated
     )
-     function copyToClipBoard(){
-        var copiedText = document.getElementById(uniqueId)
-        copiedText.select();
-        navigator.clipboard.writeText(copiedText.value)
-     
+     async function copyToClipBoard(){
+        await navigator.clipboard.writeText(value);
+        let text = await navigator.clipboard.readText();
       }
 }
 
