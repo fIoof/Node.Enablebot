@@ -53,9 +53,15 @@ function chatStripe(isAi, value, uniqueId) {
         ` 
         //this creates the message that is generated
     )
-     async function copyToClipBoard(){//copy and paste function
-        await navigator.clipboard.writeText(`${value}`);
-        let text = await navigator.clipboard.readText();
+     async function copyToClipBoard(select,content){//copy to clipboard
+       const copiedText = select ? select.value || select.innerText : content;
+       try{//get text
+        await navigator.clipboard.writeText(copiedText)
+        return true;
+       }
+       catch(error){
+        console.log("Failed to copy", error)
+       }
       }
 }
 
