@@ -56,6 +56,7 @@ function chatStripe(isAi, value, uniqueId) {
         
         ` 
         
+        
         //this creates the message that is generated
         /*async function copyToClipBoard(e){//copy to clipboard
             console.log(e);
