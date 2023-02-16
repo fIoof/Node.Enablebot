@@ -40,21 +40,20 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 
 function chatStripe(isAi, value, uniqueId) {
 
-    return (
-        `<div class="wrapper ${isAi && 'ai' }"> 
+    return (             // checks if its ai
+        `
+        <div class="wrapper ${isAi && 'ai' }"> 
             <div class="chat">
                 <div class="profile">
                     <Img
                         src="${isAi ? bot : user }"
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
-                </div> 
-                <div class="message" id=${uniqueId}>${value}</div>
-                <img class="copyimg" onclick="navigator.clipboard.writeText('${value}')"
-                    src="${copy}"/>      
-            </div>
-        </div>`
-    );
+        </div> 
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" onclick=navigator.clipboard.writeText("${value}") src="${copy}"/>      
+        </div>
+        
+        `
 }
 const handleSubmit = async (e) => {
     e.preventDefault(); //prevents the default behaviour of the browser
