@@ -39,36 +39,22 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 
 
 function chatStripe(isAi, value, uniqueId) {
-    
-    return (             // checks if its ai
-        `
-        <div class="wrapper ${isAi && 'ai' }"> 
+
+    return (
+        `<div class="wrapper ${isAi && 'ai' }"> 
             <div class="chat">
                 <div class="profile">
                     <Img
                         src="${isAi ? bot : user }"
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
-        </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" onclick=navigator.clipboard.writeText("placeholder") src="${copy}"/>      
-        </div>
-        
-        `
-
-       // this creates the message that is generated
-       // async function copyToClipBoard(e){ //copy to clipboard
-          //  console.log(e);
-          // try{//get text
-           // await navigator.clipboard.writeText(`${parsedData}`)
-         //   return true;
-         //  }
-          // catch(error){
-        //    console.log("Failed to copy", error)
-       //    }
-      //  }
-        
-    )
-   
+                </div> 
+                <div class="message" id=${uniqueId}>${value}</div>
+                <img class="copyimg" onclick="navigator.clipboard.writeText('${value}')"
+                    src="${copy}"/>      
+            </div>
+        </div>`
+    );
 }
 const handleSubmit = async (e) => {
     e.preventDefault(); //prevents the default behaviour of the browser
