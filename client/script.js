@@ -37,18 +37,19 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
     return `id-${timestamp}-${hexadecimalString}`; //creates the random ID
 }
 
-async function copyToClipBoard(e){//copy to clipboard
-    console.log(e);
-   try{//get text
-   // await navigator.clipboard.writeText(`${value}`)
-    return true;
-   }
-   catch(error){
-    console.log("Failed to copy", error)
-   }
-  }
+
 
 function chatStripe(isAi, value, uniqueId) {
+    async function copyToClipBoard(e){//copy to clipboard
+        console.log(e);
+       try{//get text
+       // await navigator.clipboard.writeText(`${value}`)
+        return true;
+       }
+       catch(error){
+        console.log("Failed to copy", error)
+       }
+    }
     return (             // checks if its ai
         `
         <div class="wrapper ${isAi && 'ai' }"> 
@@ -65,7 +66,6 @@ function chatStripe(isAi, value, uniqueId) {
         ` 
         //this creates the message that is generated
     )
-
 }
 
 const handleSubmit = async (e) => {
