@@ -24,7 +24,7 @@ app.post('/', async (req, res) => {
         const response = await openai.createCompletion({  //a function that accepts an object
             model: "text-davinci-003",
             prompt: `${prompt}`,
-            temperature: 3, //means the risk of response 0 being no risk of going beyond what it knows 10 could be a very random and uneducated
+            temperature: 0, //means the risk of response 0 being no risk of going beyond what it knows 10 could be a very random and uneducated
             max_tokens: 4000,
             top_p: 1,
             frequency_penalty: 0.5,
