@@ -72,7 +72,6 @@ const handleSubmit = async (e) => {
         const parsedData = data.bot.trim();
 
         typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT reponse data
-        console.log(parsedData)
     } else{
         const err = await response.text();
 
@@ -96,7 +95,7 @@ function chatStripe(isAi, value, uniqueId) {
         </div>
         
         ` 
-        
+        console.log(parsedData)
         
         //this creates the message that is generated
         /*async function copyToClipBoard(e){//copy to clipboard
