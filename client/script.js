@@ -50,10 +50,25 @@ function chatStripe(isAi, value, uniqueId) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" onclick=navigator.clipboard.writeText("") src="${copy}"/>      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" onclick=navigator.clipboard.writeText("placeholder") src="${copy}"/>      
         </div>
         
         `
+
+        // this creates the message that is generated
+        // async function copyToClipBoard(e){ //copy to clipboard
+        //  console.log(e);
+        // try{//get text
+        // await navigator.clipboard.writeText(`${parsedData}`)
+        //   return true;
+        //  }
+        // catch(error){
+        //    console.log("Failed to copy", error)
+        //    }
+        //  }
+
+    )
+
 }
 const handleSubmit = async (e) => {
     e.preventDefault(); //prevents the default behaviour of the browser
