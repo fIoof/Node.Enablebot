@@ -37,6 +37,39 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
     return `id-${timestamp}-${hexadecimalString}`; //creates the random ID
 }
 
+
+function chatStripe(isAi, value, uniqueId) {
+    
+    return (             // checks if its ai
+        `
+        <div class="wrapper ${isAi && 'ai' }"> 
+            <div class="chat">
+                <div class="profile">
+                    <Img
+                        src="${isAi ? bot : user }"
+                        alt="${isAi ? 'bot' : 'user'}"   
+                    />  
+        </div> 
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" onclick=navigator.clipboard.writeText("placeholder") src="${copy}"/>      
+        </div>
+        
+        `
+
+       // this creates the message that is generated
+       // async function copyToClipBoard(e){ //copy to clipboard
+          //  console.log(e);
+          // try{//get text
+           // await navigator.clipboard.writeText(`${parsedData}`)
+         //   return true;
+         //  }
+          // catch(error){
+        //    console.log("Failed to copy", error)
+       //    }
+      //  }
+        
+    )
+   
+}
 const handleSubmit = async (e) => {
     e.preventDefault(); //prevents the default behaviour of the browser
 
@@ -56,7 +89,7 @@ const handleSubmit = async (e) => {
 
     loader(messageDiv);
     // fetch data from server -> bot's response
-    const response = await fetch('https://enablebot.onrender.com',{
+    const response = await fetch('https://enablebot.onrender.com', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -67,12 +100,12 @@ const handleSubmit = async (e) => {
     })
     clearInterval(loadInterval)
     messageDiv.innerHTML = ''; //resets the message div to an empty string
-    if(response.ok){
+    if (response.ok) {
         const data = await response.json(); //this gives us the actual response
         const parsedData = data.bot.trim();
 
         typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT reponse data
-    } else{
+    } else {
         const err = await response.text();
 
         messageDiv.innerHTML = "Something went wrong";
@@ -95,7 +128,7 @@ function chatStripe(isAi, value, uniqueId) {
         </div>
         
         `
-       
+        console.log(data);
         //this creates the message that is generated
         /*async function copyToClipBoard(e){//copy to clipboard
             console.log(e);
