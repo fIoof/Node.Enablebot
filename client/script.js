@@ -36,6 +36,8 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 
     return `id-${timestamp}-${hexadecimalString}`; //creates the random ID
 }
+
+
 function chatStripe(isAi, value, uniqueId) {
     
     return (             // checks if its ai
@@ -52,7 +54,7 @@ function chatStripe(isAi, value, uniqueId) {
         </div>
         
         `
-        console.log(data);
+
         //this creates the message that is generated
         /*async function copyToClipBoard(e){//copy to clipboard
             console.log(e);
@@ -110,7 +112,6 @@ const handleSubmit = async (e) => {
         alert(err);
     }
 }
-
 form.addEventListener('submit', handleSubmit); //is a listener for a submit event
 form.addEventListener('keyup',(e) => { //listens for when we press the enter key
     if (e.keyCode === 13) { // 13 = Enter key
