@@ -50,20 +50,15 @@ function chatStripe(isAi, value, uniqueId) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><button class="copy-button">
-                    <img src="${copy}" alt="Copy to clipboard" />
-                </button>      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" onclick=navigator.clipboard.writeText("${value}") src="${copy}"/>      
         </div>
         
         `
-    )
-
 }
 const handleSubmit = async (e) => {
     e.preventDefault(); //prevents the default behaviour of the browser
 
     const data = new FormData(form);
-    console.log(data.get('prompt'));
     // User's Chatstripe
     chatContainer.innerHTML += chatStripe(false, data.get('prompt')); //if user passes the data from the form
 
@@ -93,17 +88,7 @@ const handleSubmit = async (e) => {
     if (response.ok) {
         const data = await response.json(); //this gives us the actual response
         const parsedData = data.bot.trim();
-        const copyButton = messageDiv.querySelector('.copy-button'); //1
-        copyButton.addEventListener('click', () => {
-            const textToCopy = messageDiv.querySelector('.message').textContent;
-            navigator.clipboard.writeText(textToCopy)
-                .then(() => {
-                    alert(`"${textToCopy}" copied to clipboard!`);
-                })
-                .catch(() => {
-                    alert('Failed to copy text to clipboard.');
-                });
-        }); //2
+
         typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT reponse data
     } else {
         const err = await response.text();
