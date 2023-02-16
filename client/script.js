@@ -56,7 +56,7 @@ function chatStripe(isAi, value, uniqueId) {
      async function copyToClipBoard(e){//copy to clipboard
         console.log(e);
        try{//get text
-        await navigator.clipboard.writeText(`${value}`)
+       // await navigator.clipboard.writeText(`${value}`)
         return true;
        }
        catch(error){
