@@ -40,16 +40,7 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 
 
 function chatStripe(isAi, value, uniqueId) {
-    async function copyToClipBoard(e){//copy to clipboard
-        console.log(e);
-       try{//get text
-       // await navigator.clipboard.writeText(`${value}`)
-        return true;
-       }
-       catch(error){
-        console.log("Failed to copy", error)
-       }
-    }
+
     return (             // checks if its ai
         `
         <div class="wrapper ${isAi && 'ai' }"> 
@@ -60,11 +51,21 @@ function chatStripe(isAi, value, uniqueId) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" onclick="${copyToClipBoard()}" src="${copy}"/>      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" onclick="navigator.clipboard.writeText(`${value}`)" src="${copy}"/>      
         </div>
         
         ` 
         //this creates the message that is generated
+        async function copyToClipBoard(e){//copy to clipboard
+            console.log(e);
+           try{//get text
+           // await navigator.clipboard.writeText(`${value}`)
+            return true;
+           }
+           catch(error){
+            console.log("Failed to copy", error)
+           }
+        }
     )
 }
 
