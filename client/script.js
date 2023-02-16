@@ -78,7 +78,7 @@ const handleSubmit = async (e) => {
         messageDiv.innerHTML = "Something went wrong";
         alert(err);
     }
-
+}
 function chatStripe(isAi, value, uniqueId) {
     
     return (             // checks if its ai
@@ -91,10 +91,11 @@ function chatStripe(isAi, value, uniqueId) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" onclick="navigator.clipboard.writeText('${parsedData}') src="${copy}"/>      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" onclick="navigator.clipboard.writeText('parsedData') src="${copy}"/>      
         </div>
         
-        `
+        ` 
+        console.log(parsedData)
         
         //this creates the message that is generated
         /*async function copyToClipBoard(e){//copy to clipboard
@@ -110,7 +111,7 @@ function chatStripe(isAi, value, uniqueId) {
         
     )
    
-}}
+}
 
 form.addEventListener('submit', handleSubmit); //is a listener for a submit event
 form.addEventListener('keyup',(e) => { //listens for when we press the enter key
