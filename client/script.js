@@ -7,7 +7,7 @@ const chatContainer = document.querySelector('#chat_container'); // selects the 
 
 let loadInterval;
 
-function loader(element){ // Loading dots when thinking about awnswer
+function loader(element){ // Loading dots when thinking about answer
     element.textContent = ''; //ensures its empty at the start
 
     loadInterval = setInterval(() => {
@@ -39,36 +39,22 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 
 
 function chatStripe(isAi, value, uniqueId) {
-    
-    return (             // checks if its ai
-        `
-        <div class="wrapper ${isAi && 'ai' }"> 
+
+    return (
+        `<div class="wrapper ${isAi && 'ai' }"> 
             <div class="chat">
                 <div class="profile">
                     <Img
                         src="${isAi ? bot : user }"
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
-        </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" onclick=navigator.clipboard.writeText("placeholder") src="${copy}"/>      
-        </div>
-        
-        `
-
-       // this creates the message that is generated
-       // async function copyToClipBoard(e){ //copy to clipboard
-          //  console.log(e);
-          // try{//get text
-           // await navigator.clipboard.writeText(`${parsedData}`)
-         //   return true;
-         //  }
-          // catch(error){
-        //    console.log("Failed to copy", error)
-       //    }
-      //  }
-        
-    )
-   
+                </div> 
+                <div class="message" id=${uniqueId}>${value}</div>
+                <img class="copyimg" onclick="navigator.clipboard.writeText('${value}')"
+                    src="${copy}"/>      
+            </div>
+        </div>`
+    );
 }
 const handleSubmit = async (e) => {
     e.preventDefault(); //prevents the default behaviour of the browser
@@ -77,7 +63,7 @@ const handleSubmit = async (e) => {
     // User's Chatstripe
     chatContainer.innerHTML += chatStripe(false, data.get('prompt')); //if user passes the data from the form
 
-    form.reset(); // resets the data in the form so a new awnswer can be asked.
+    form.reset(); // resets the data in the form so a new answer can be asked.
 
     //Bot's Chatstripe
     const uniqueId = generateUniqueId();
@@ -104,7 +90,7 @@ const handleSubmit = async (e) => {
         const data = await response.json(); //this gives us the actual response
         const parsedData = data.bot.trim();
 
-        typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT reponse data
+        typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT response data
     } else {
         const err = await response.text();
 
@@ -118,3 +104,14 @@ form.addEventListener('keyup',(e) => { //listens for when we press the enter key
         handleSubmit(e);
     }
 })
+// this creates the message that is generated
+// async function copyToClipBoard(e){ //copy to clipboard
+//  console.log(e);
+// try{//get text
+// await navigator.clipboard.writeText(`${parsedData}`)
+//   return true;
+//  }
+// catch(error){
+//    console.log("Failed to copy", error)
+//    }
+//  }
