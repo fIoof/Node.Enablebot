@@ -50,7 +50,9 @@ function chatStripe(isAi, value, uniqueId) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" onclick=navigator.clipboard.writeText("${value}") src="${copy}"/>      
+         <div class="message" id=${uniqueId}>${value}</div><button class="copy-button">
+                    <img src="${copy}" alt="Copy to clipboard" />
+                </button>      
         </div>
         
         `
@@ -91,16 +93,16 @@ const handleSubmit = async (e) => {
     if (response.ok) {
         const data = await response.json(); //this gives us the actual response
         const parsedData = data.bot.trim();
-        const copyImg = messageDiv.querySelector('.copyimg'); //1
-        copyImg.addEventListener('click', async (e) => {
-            e.preventDefault();
-            const text = e.currentTarget.dataset.clipboardText;
-            try {
-                await navigator.clipboard.writeText(text);
-                alert(`"${text}" copied to clipboard!`);
-            } catch (err) {
-                alert('Failed to copy text to clipboard.');
-            }
+        const copyButton = messageDiv.querySelector('.copy-button'); //1
+        copyButton.addEventListener('click', () => {
+            const textToCopy = messageDiv.querySelector('.message').textContent;
+            navigator.clipboard.writeText(textToCopy)
+                .then(() => {
+                    alert(`"${textToCopy}" copied to clipboard!`);
+                })
+                .catch(() => {
+                    alert('Failed to copy text to clipboard.');
+                });
         }); //2
         typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT reponse data
     } else {
