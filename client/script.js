@@ -36,49 +36,6 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 
     return `id-${timestamp}-${hexadecimalString}`; //creates the random ID
 }
-
-const handleSubmit = async (e) => {
-    e.preventDefault(); //prevents the default behaviour of the browser
-
-    const data = new FormData(form);
-    // User's Chatstripe
-    chatContainer.innerHTML += chatStripe(false, data.get('prompt')); //if user passes the data from the form
-
-    form.reset(); // resets the data in the form so a new awnswer can be asked.
-
-    //Bot's Chatstripe
-    const uniqueId = generateUniqueId();
-    chatContainer.innerHTML += chatStripe(true, " ", uniqueId); // is empty as it is filling up as it is loading
-
-    chatContainer.scrollTop = chatContainer.scrollHeight; //this puts the message in view
-
-    const messageDiv = document.getElementById(uniqueId); //this fetches the message via a unique ID
-
-    loader(messageDiv);
-    // fetch data from server -> bot's response
-    const response = await fetch('https://enablebot.onrender.com',{
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            prompt: data.get('prompt') //this is where the data with the message
-        })
-    })
-    clearInterval(loadInterval)
-    messageDiv.innerHTML = ''; //resets the message div to an empty string
-    if(response.ok){
-        const data = await response.json(); //this gives us the actual response
-        const parsedData = data.bot.trim();
-
-        typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT reponse data
-    } else{
-        const err = await response.text();
-
-        messageDiv.innerHTML = "Something went wrong";
-        alert(err);
-    }
-
 function chatStripe(isAi, value, uniqueId) {
     
     return (             // checks if its ai
@@ -110,7 +67,49 @@ function chatStripe(isAi, value, uniqueId) {
         
     )
    
-}}
+}
+const handleSubmit = async (e) => {
+    e.preventDefault(); //prevents the default behaviour of the browser
+
+    const data = new FormData(form);
+    // User's Chatstripe
+    chatContainer.innerHTML += chatStripe(false, data.get('prompt')); //if user passes the data from the form
+
+    form.reset(); // resets the data in the form so a new awnswer can be asked.
+
+    //Bot's Chatstripe
+    const uniqueId = generateUniqueId();
+    chatContainer.innerHTML += chatStripe(true, " ", uniqueId); // is empty as it is filling up as it is loading
+
+    chatContainer.scrollTop = chatContainer.scrollHeight; //this puts the message in view
+
+    const messageDiv = document.getElementById(uniqueId); //this fetches the message via a unique ID
+
+    loader(messageDiv);
+    // fetch data from server -> bot's response
+    const response = await fetch('https://enablebot.onrender.com', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            prompt: data.get('prompt') //this is where the data with the message
+        })
+    })
+    clearInterval(loadInterval)
+    messageDiv.innerHTML = ''; //resets the message div to an empty string
+    if (response.ok) {
+        const data = await response.json(); //this gives us the actual response
+        const parsedData = data.bot.trim();
+
+        typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT reponse data
+    } else {
+        const err = await response.text();
+
+        messageDiv.innerHTML = "Something went wrong";
+        alert(err);
+    }
+}
 
 form.addEventListener('submit', handleSubmit); //is a listener for a submit event
 form.addEventListener('keyup',(e) => { //listens for when we press the enter key
