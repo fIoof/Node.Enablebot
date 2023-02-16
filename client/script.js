@@ -54,6 +54,8 @@ function chatStripe(isAi, value, uniqueId) {
         </div>
         
         `
+    )
+
 }
 const handleSubmit = async (e) => {
     e.preventDefault(); //prevents the default behaviour of the browser
