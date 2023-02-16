@@ -40,7 +40,7 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 
 
 function chatStripe(isAi, value, uniqueId) {
-
+    console.log(value)
     return (             // checks if its ai
         `
         <div class="wrapper ${isAi && 'ai' }"> 
@@ -55,6 +55,7 @@ function chatStripe(isAi, value, uniqueId) {
         </div>
         
         ` 
+        
         //this creates the message that is generated
         /*async function copyToClipBoard(e){//copy to clipboard
             console.log(e);
@@ -67,6 +68,7 @@ function chatStripe(isAi, value, uniqueId) {
            }
         }*/
     )
+   
 }
 
 
