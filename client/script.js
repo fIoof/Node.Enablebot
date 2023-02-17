@@ -87,7 +87,7 @@ form.addEventListener('keyup',(e) => { //listens for when we press the enter key
         handleSubmit(e);
     }
 })
-function chatStripe(isAi, value, uniqueId) {
+function chatStripe(isAi, value, uniqueId, parsedData) {
 
     return (             // checks if its ai
         `
@@ -99,7 +99,7 @@ function chatStripe(isAi, value, uniqueId) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="navigator.clipboard.writeText('${parsedData.data}');"/>      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="navigator.clipboard.writeText('${parsedData}');"/>      
         </div>
         
         `
