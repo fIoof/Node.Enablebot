@@ -38,38 +38,7 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 }
 
 
-function chatStripe(isAi, value, uniqueId) {
 
-    return (             // checks if its ai
-        `
-        <div class="wrapper ${isAi && 'ai' }"> 
-            <div class="chat">
-                <div class="profile">
-                    <Img
-                        src="${isAi ? bot : user }"
-                        alt="${isAi ? 'bot' : 'user'}"   
-                    />  
-        </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="navigator.clipboard.writeText('${value.data}');"/>      
-        </div>
-        
-        `
-
-        // this creates the message that is generated
-        // async function copyToClipBoard(e){ //copy to clipboard
-        //  console.log(e);
-        // try{//get text
-        // await navigator.clipboard.writeText(`${parsedData}`)
-        //   return true;
-        //  }
-        // catch(error){
-        //    console.log("Failed to copy", error)
-        //    }
-        //  }
-
-    )
-
-}
 const handleSubmit = async (e) => {
     e.preventDefault(); //prevents the default behaviour of the browser
 
@@ -118,3 +87,35 @@ form.addEventListener('keyup',(e) => { //listens for when we press the enter key
         handleSubmit(e);
     }
 })
+function chatStripe(isAi, value, uniqueId) {
+
+    return (             // checks if its ai
+        `
+        <div class="wrapper ${isAi && 'ai' }"> 
+            <div class="chat">
+                <div class="profile">
+                    <Img
+                        src="${isAi ? bot : user }"
+                        alt="${isAi ? 'bot' : 'user'}"   
+                    />  
+        </div> 
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="navigator.clipboard.writeText('${parsedData.data}');"/>      
+        </div>
+        
+        `
+
+        // this creates the message that is generated
+        // async function copyToClipBoard(e){ //copy to clipboard
+        //  console.log(e);
+        // try{//get text
+        // await navigator.clipboard.writeText(`${parsedData}`)
+        //   return true;
+        //  }
+        // catch(error){
+        //    console.log("Failed to copy", error)
+        //    }
+        //  }
+
+    )
+
+}
