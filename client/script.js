@@ -50,7 +50,7 @@ function chatStripe(isAi, value, uniqueId) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="navigator.clipboard.writeText('${data.value}');"/>      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="navigator.clipboard.writeText('${parsedData.value}');"/>      
         </div>
         
         `
