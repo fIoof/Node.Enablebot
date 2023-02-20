@@ -38,7 +38,7 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 }
 
 
-function chatStripe(isAi, value, uniqueId, ) {
+function chatStripe(isAi, value, uniqueId, messageDiv ) {
 
     return (             // checks if its ai
         `
