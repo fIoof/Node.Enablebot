@@ -50,12 +50,12 @@ function chatStripe(isAi, value, uniqueId, ) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="navigator.clipboard.writeText('${value}');"/>      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="navigator.clipboard.writeText('${messageDiv.data}');"/>      
         </div>
         
         `
 
-        
+
         // this creates the message that is generated
         // async function copyToClipBoard(e){ //copy to clipboard
         //  console.log(e);
