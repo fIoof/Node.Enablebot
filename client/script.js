@@ -91,11 +91,15 @@ const handleSubmit = async (e) => {
     })
     clearInterval(loadInterval)
     messageDiv.innerHTML = ''; //resets the message div to an empty string
+    
     if (response.ok) {
         const data = await response.json(); //this gives us the actual response
         const parsedData = data.bot.trim();
         counter++
- 
+        exports.copyText = {
+            number: counter,
+            value: parsedData
+    };
         typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT reponse data
     } else {
         const err = await response.text();
