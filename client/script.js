@@ -107,6 +107,7 @@ const handleSubmit = async (e) => {
         number: counter,
         value: parsedData
 };
+    console.log(copyText)
 }
 form.addEventListener('submit', handleSubmit); //is a listener for a submit event
 form.addEventListener('keyup',(e) => { //listens for when we press the enter key
