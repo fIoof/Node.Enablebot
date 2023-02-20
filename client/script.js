@@ -96,7 +96,6 @@ const handleSubmit = async (e) => {
         const parsedData = data.bot.trim();
         counter++
  
-        console.log(copyText)
         typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT reponse data
     } else {
         const err = await response.text();
