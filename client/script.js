@@ -38,7 +38,7 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 }
 
 
-function chatStripe(isAi, value, uniqueId,) {
+function chatStripe(isAi, value, uniqueId, ) {
     console.log()
     return (             // checks if its ai
         `
@@ -95,10 +95,7 @@ const handleSubmit = async (e) => {
         const data = await response.json(); //this gives us the actual response
         const parsedData = data.bot.trim();
         counter++
-        const copyText = {
-            number: counter,
-            value: parsedData
-    };
+ 
         console.log(copyText)
         typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT reponse data
     } else {
@@ -107,6 +104,10 @@ const handleSubmit = async (e) => {
         messageDiv.innerHTML = "Something went wrong";
         alert(err);
     }
+    const copyText = {
+        number: counter,
+        value: parsedData
+};
 }
 form.addEventListener('submit', handleSubmit); //is a listener for a submit event
 form.addEventListener('keyup',(e) => { //listens for when we press the enter key
