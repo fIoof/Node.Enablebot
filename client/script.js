@@ -116,3 +116,4 @@ form.addEventListener('keyup',(e) => { //listens for when we press the enter key
         handleSubmit(e);
     }
 })
+console.log(globalarray)
