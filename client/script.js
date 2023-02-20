@@ -95,7 +95,7 @@ const handleSubmit = async (e) => {
     if (response.ok) {
         const data = await response.json(); //this gives us the actual response
         const parsedData = data.bot.trim();
-        counter++
+        counter++;
         const copyText = {
             number: counter,
             value: parsedData
@@ -117,5 +117,5 @@ form.addEventListener('keyup',(e) => { //listens for when we press the enter key
         handleSubmit(e);
     }
 })
-import copyText;
+import copyText
 console.log(copyText)
