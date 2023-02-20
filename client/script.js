@@ -38,7 +38,7 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 }
 
 
-function chatStripe(isAi, value, uniqueId, parsedData,copyToClipBoard) {
+function chatStripe(isAi, value, uniqueId, copyToClipBoard) {
     console.log()
     return (             // checks if its ai
         `
@@ -50,7 +50,7 @@ function chatStripe(isAi, value, uniqueId, parsedData,copyToClipBoard) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="copyToClipBoard.copytext.call(parsedData)";"/>      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="";"/>      
         </div>
         
         `
@@ -110,9 +110,3 @@ form.addEventListener('keyup',(e) => { //listens for when we press the enter key
     }
 })
 
-const copyToClipBoard ={
-    copyText : function(){
-        return this.parsedData
-    }
-}
-        
