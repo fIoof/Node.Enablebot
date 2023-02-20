@@ -95,7 +95,7 @@ const handleSubmit = async (e) => {
         const data = await response.json(); //this gives us the actual response
         const parsedData = data.bot.trim();
         counter++
- 
+        parsedData = copyText.value
         typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT reponse data
     } else {
         const err = await response.text();
@@ -114,4 +114,3 @@ form.addEventListener('keyup',(e) => { //listens for when we press the enter key
         handleSubmit(e);
     }
 })
-
