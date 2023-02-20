@@ -4,7 +4,7 @@ import copy from './assets/copy.svg';
 
 const form = document.querySelector('form'); //targets HTML element it being the form
 const chatContainer = document.querySelector('#chat_container'); // selects the HTML element "chat_container"
-var counter = 0;
+
 let loadInterval;
 
 function loader(element){ // Loading dots when thinking about awnswer
@@ -38,7 +38,7 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 }
 
 
-function chatStripe(isAi, value, uniqueId, ) {
+function chatStripe(isAi, value, uniqueId, messageDiv ) {
 
     return (             // checks if its ai
         `
@@ -50,12 +50,12 @@ function chatStripe(isAi, value, uniqueId, ) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${isAI ? copy : user}" onclick="navigator.clipboard.writeText('${value}');"/>      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="navigator.clipboard.writeText('${messageDiv.data}');"/>      
         </div>
         
         `
 
-        
+
         // this creates the message that is generated
         // async function copyToClipBoard(e){ //copy to clipboard
         //  console.log(e);
@@ -113,7 +113,7 @@ const handleSubmit = async (e) => {
         alert(err);
     }
 }
-form.addEventListener('submit', handleSubmit) //is a listener for a submit event
+form.addEventListener('submit', handleSubmit); //is a listener for a submit event
 form.addEventListener('keyup',(e) => { //listens for when we press the enter key
     if (e.keyCode === 13) { // 13 = Enter key
         handleSubmit(e);
