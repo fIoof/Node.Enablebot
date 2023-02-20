@@ -39,7 +39,7 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 
 
 function chatStripe(isAi, value, uniqueId, parsedData) {
-    console.log(uniqueId.data)
+    console.log()
     return (             // checks if its ai
         `
         <div class="wrapper ${isAi && 'ai' }"> 
@@ -100,7 +100,7 @@ const handleSubmit = async (e) => {
         })
     })
     clearInterval(loadInterval)
-    messageDiv.innerHTML = ''; //resets the message div to an empty string
+    messageDiv.innerHTML = console.log(parsedData); //resets the message div to an empty string
     if (response.ok) {
         const data = await response.json(); //this gives us the actual response
         const parsedData = data.bot.trim();
