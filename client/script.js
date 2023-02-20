@@ -5,6 +5,7 @@ import copy from './assets/copy.svg';
 const form = document.querySelector('form'); //targets HTML element it being the form
 const chatContainer = document.querySelector('#chat_container'); // selects the HTML element "chat_container"
 var counter = 0
+const copyText = []
 let loadInterval;
 
 function loader(element){ // Loading dots when thinking about awnswer
@@ -96,12 +97,12 @@ const handleSubmit = async (e) => {
         const data = await response.json(); //this gives us the actual response
         const parsedData = data.bot.trim();
         counter++;
-        const copyText = {
-            number: counter,
-            value: parsedData
-            
+       const copytextfunc = () =>  {
+            copyText.push(
+            `number`: `${counter}`
+            `value`: `${parsedData}`
     };
-        export copyText
+        copytextfunc()
         typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT reponse data
     } else {
         const err = await response.text();
@@ -117,5 +118,4 @@ form.addEventListener('keyup',(e) => { //listens for when we press the enter key
         handleSubmit(e);
     }
 })
-import copyText
 console.log(copyText)
