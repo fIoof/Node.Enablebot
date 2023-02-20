@@ -50,7 +50,7 @@ function chatStripe(isAi, value, uniqueId, copyText) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="${copyText.value}";"/>      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="${copyText};""/>      
         </div>
         
         `
@@ -96,9 +96,10 @@ const handleSubmit = async (e) => {
         const data = await response.json(); //this gives us the actual response
         const parsedData = data.bot.trim();
         counter++
-        exports.copyText = {
+        const copyText = {
             number: counter,
             value: parsedData
+            
     };
         typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT reponse data
     } else {
