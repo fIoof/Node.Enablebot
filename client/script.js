@@ -39,7 +39,7 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 
 
 function chatStripe(isAi, value, uniqueId, parsedData) {
-    console.log(parsedData.value)
+    console.log(uniqueId)
     return (             // checks if its ai
         `
         <div class="wrapper ${isAi && 'ai' }"> 
