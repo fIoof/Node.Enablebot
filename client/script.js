@@ -50,7 +50,7 @@ function chatStripe(isAi, value, uniqueId, copyText) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="${copyText};""/>      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="'hello';""/>      
         </div>
         
         `
@@ -101,6 +101,7 @@ const handleSubmit = async (e) => {
             value: parsedData
             
     };
+        export copyText
         typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT reponse data
     } else {
         const err = await response.text();
@@ -116,3 +117,5 @@ form.addEventListener('keyup',(e) => { //listens for when we press the enter key
         handleSubmit(e);
     }
 })
+import copyText;
+console.log(copyText)
