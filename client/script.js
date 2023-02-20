@@ -4,7 +4,7 @@ import copy from './assets/copy.svg';
 
 const form = document.querySelector('form'); //targets HTML element it being the form
 const chatContainer = document.querySelector('#chat_container'); // selects the HTML element "chat_container"
-
+var counter = 0
 let loadInterval;
 
 function loader(element){ // Loading dots when thinking about awnswer
@@ -38,7 +38,7 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 }
 
 
-function chatStripe(isAi, value, uniqueId, copyToClipBoard) {
+function chatStripe(isAi, value, uniqueId,) {
     console.log()
     return (             // checks if its ai
         `
@@ -94,7 +94,12 @@ const handleSubmit = async (e) => {
     if (response.ok) {
         const data = await response.json(); //this gives us the actual response
         const parsedData = data.bot.trim();
-
+        counter++
+        const copyText = {
+            number: counter,
+            value: parsedData
+    };
+        console.log(copyText)
         typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT reponse data
     } else {
         const err = await response.text();
