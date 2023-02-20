@@ -38,7 +38,7 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 }
 
 
-function chatStripe(isAi, value, uniqueId, ) {
+function chatStripe(isAi, value, uniqueId, copyText) {
     console.log()
     return (             // checks if its ai
         `
@@ -50,7 +50,7 @@ function chatStripe(isAi, value, uniqueId, ) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="";"/>      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="${copyText.value}";"/>      
         </div>
         
         `
@@ -91,11 +91,15 @@ const handleSubmit = async (e) => {
     })
     clearInterval(loadInterval)
     messageDiv.innerHTML = ''; //resets the message div to an empty string
+    
     if (response.ok) {
         const data = await response.json(); //this gives us the actual response
         const parsedData = data.bot.trim();
         counter++
-        copyText.value = parsedData
+        exports.copyText = {
+            number: counter,
+            value: parsedData
+    };
         typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT reponse data
     } else {
         const err = await response.text();
@@ -103,11 +107,7 @@ const handleSubmit = async (e) => {
         messageDiv.innerHTML = "Something went wrong";
         alert(err);
     }
-    const copyText = {
-        number: counter,
-        value: parsedData
-};
-    console.log(copyText)
+
 }
 form.addEventListener('submit', handleSubmit); //is a listener for a submit event
 form.addEventListener('keyup',(e) => { //listens for when we press the enter key
