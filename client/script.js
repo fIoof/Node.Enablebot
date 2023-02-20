@@ -38,7 +38,7 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 }
 
 
-function chatStripe(isAi, value, uniqueId, parsedData) {
+function chatStripe(isAi, value, uniqueId, parsedData,copyToClipBoard) {
     console.log()
     return (             // checks if its ai
         `
@@ -50,23 +50,13 @@ function chatStripe(isAi, value, uniqueId, parsedData) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="navigator.clipboard.writeText('${parsedData}');"/>      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="copyToClipBoard.copytext.call(parsedData)";"/>      
         </div>
         
         `
+      // this creates the message that is generated
 
-
-        // this creates the message that is generated
-        // async function copyToClipBoard(e){ //copy to clipboard
-        //  console.log(e);
-        // try{//get text
-        // await navigator.clipboard.writeText(`${parsedData}`)
-        //   return true;
-        //  }
-        // catch(error){
-        //    console.log("Failed to copy", error)
-        //    }
-        //  }
+ 
 
     )
 
@@ -100,7 +90,7 @@ const handleSubmit = async (e) => {
         })
     })
     clearInterval(loadInterval)
-    messageDiv.innerHTML = console.log(parsedData); //resets the message div to an empty string
+    messageDiv.innerHTML = ''; //resets the message div to an empty string
     if (response.ok) {
         const data = await response.json(); //this gives us the actual response
         const parsedData = data.bot.trim();
@@ -119,3 +109,10 @@ form.addEventListener('keyup',(e) => { //listens for when we press the enter key
         handleSubmit(e);
     }
 })
+
+const copyToClipBoard ={
+    copyText : function(){
+        return this.parsedData
+    }
+}
+        
