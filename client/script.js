@@ -96,7 +96,7 @@ const handleSubmit = async (e) => {
         const data = await response.json(); //this gives us the actual response
         const parsedData = data.bot.trim();
         const copyText = () => {
-            counter++
+            counter = globalarray.length
             globalarray.push({
                 number: counter,
                 value: parsedData
