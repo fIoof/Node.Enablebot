@@ -5,7 +5,7 @@ import copy from './assets/copy.svg';
 const form = document.querySelector('form'); //targets HTML element it being the form
 const chatContainer = document.querySelector('#chat_container'); // selects the HTML element "chat_container"
 let counter = 0
-const globalarray = [];
+const chatHistory = [];
 let loadInterval;
 
 function loader(element){ // Loading dots when thinking about awnswer
@@ -39,7 +39,7 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 }
 
 
-function chatStripe(isAi, value, uniqueId, globalarray) {
+function chatStripe(isAi, value, uniqueId, chatHistory) {
     return (             // checks if its ai
         `
         <div class="wrapper ${isAi && 'ai' }"> 
@@ -50,7 +50,7 @@ function chatStripe(isAi, value, uniqueId, globalarray) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="${globalarray}.value" />      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="${chatHistory}.value" />      
         </div>
         
         `
@@ -96,15 +96,15 @@ const handleSubmit = async (e) => {
         const data = await response.json(); //this gives us the actual response
         const parsedData = data.bot.trim();
         const copyText = () => {
-            counter = globalarray.length
-            globalarray.push({
+            counter = chatHistory.length
+            chatHistory.push({
                 number: counter,
                 value: parsedData
             })
     };
         copyText()
         typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT reponse data
-        console.log(globalarray)
+        console.log(chatHistory)
     } else {
         const err = await response.text();
 
