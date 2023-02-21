@@ -97,7 +97,10 @@ const handleSubmit = async (e) => {
         const parsedData = data.bot.trim();
         const copyText = () => {
             counter++
-            globalarray.push(parsedData)
+            globalarray.push({
+                number: counter,
+                value: parsedData
+            })
     };
         copyText()
         typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT reponse data
