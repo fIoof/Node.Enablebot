@@ -19,6 +19,19 @@ function loader(element){ // Loading dots when thinking about awnswer
     },300) //every 300 miliseconds adds a dot 3 times and then clears the text
 
 }
+function copyToClipboard() {
+    let copyText = chatHistory.value
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    navigator.clipboard
+        .writeText(copyText.value)
+        .then(() => {
+            alert("successfully copied");
+        })
+        .catch(() => {
+            alert("something went wrong");
+        });
+}
 function typeText(element,text){ // this allows the response of the bot to type out slowly making it seem more human
     let index = 0;
 
@@ -119,16 +132,3 @@ form.addEventListener('keyup',(e) => { //listens for when we press the enter key
         handleSubmit(e);
     }
 })
-function copyToClipboard() {
-        let copyText = chatHistory.value
-        copyText.select();
-        copyText.setSelectionRange(0, 99999);
-        navigator.clipboard
-            .writeText(copyText.value)
-            .then(() => {
-                alert("successfully copied");
-            })
-            .catch(() => {
-                alert("something went wrong");
-            });
-    }
