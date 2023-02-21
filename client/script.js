@@ -39,7 +39,7 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 }
 
 
-function chatStripe(isAi, value, uniqueId, chatHistory) {
+function chatStripe(isAi, value, uniqueId,) {
     return (             // checks if its ai
         `
         <div class="wrapper ${isAi && 'ai' }"> 
@@ -50,7 +50,7 @@ function chatStripe(isAi, value, uniqueId, chatHistory) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="${chatHistory}.value" />      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="" />      
         </div>
         
         `
@@ -119,4 +119,9 @@ form.addEventListener('keyup',(e) => { //listens for when we press the enter key
         handleSubmit(e);
     }
 })
+//function copyToClipboard(){
+   // let copiedText = chatHistory[`${counter} value`]
+   // copiedText.select();
+   // navigator.clipboard.write(copiedText.value)
+//}
 
