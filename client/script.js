@@ -95,8 +95,8 @@ const handleSubmit = async (e) => {
     if (response.ok) {
         const data = await response.json(); //this gives us the actual response
         const parsedData = data.bot.trim();
-        counter++
         const copyText = () => {
+            counter++
             globalarray.push(parsedData)
     };
         copyText()
