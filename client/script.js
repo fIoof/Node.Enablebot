@@ -50,7 +50,7 @@ function chatStripe(isAi, value, uniqueId, chatHistory) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="navigator.clipboard.writeText(chatHistory)" />      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="copyToClipboard()" />      
         </div>
         
         `
@@ -119,9 +119,16 @@ form.addEventListener('keyup',(e) => { //listens for when we press the enter key
         handleSubmit(e);
     }
 })
-//function copyToClipboard(){
-   // let copiedText = chatHistory[`${counter} value`]
-   // copiedText.select();
-   // navigator.clipboard.write(copiedText.value)
-//}
-
+function copyToClipboard() {
+        let copyText = chatHistory.value
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        navigator.clipboard
+            .writeText(copyText.value)
+            .then(() => {
+                alert("successfully copied");
+            })
+            .catch(() => {
+                alert("something went wrong");
+            });
+    }
