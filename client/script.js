@@ -4,8 +4,8 @@ import copy from './assets/copy.svg';
 
 const form = document.querySelector('form'); //targets HTML element it being the form
 const chatContainer = document.querySelector('#chat_container'); // selects the HTML element "chat_container"
-let counter = 0
-const chatHistory = [];
+var counter = 0
+const globalarray = [];
 let loadInterval;
 
 function loader(element){ // Loading dots when thinking about awnswer
@@ -39,7 +39,7 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 }
 
 
-function chatStripe(isAi, value, uniqueId,) {
+function chatStripe(isAi, value, uniqueId, ) {
     return (             // checks if its ai
         `
         <div class="wrapper ${isAi && 'ai' }"> 
@@ -50,7 +50,7 @@ function chatStripe(isAi, value, uniqueId,) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="" />      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="'test'" />      
         </div>
         
         `
@@ -95,16 +95,13 @@ const handleSubmit = async (e) => {
     if (response.ok) {
         const data = await response.json(); //this gives us the actual response
         const parsedData = data.bot.trim();
+        counter++
         const copyText = () => {
-            counter = chatHistory.length
-            chatHistory.push({
-                number: counter,
-                value: parsedData
-            })
+            globalarray.push(parsedData)
     };
+    
         copyText()
         typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT reponse data
-        console.log(chatHistory)
     } else {
         const err = await response.text();
 
@@ -119,9 +116,4 @@ form.addEventListener('keyup',(e) => { //listens for when we press the enter key
         handleSubmit(e);
     }
 })
-//function copyToClipboard(){
-   // let copiedText = chatHistory[`${counter} value`]
-   // copiedText.select();
-   // navigator.clipboard.write(copiedText.value)
-//}
-
+console.log(globalarray)
