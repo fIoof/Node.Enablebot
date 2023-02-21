@@ -4,8 +4,8 @@ import copy from './assets/copy.svg';
 
 const form = document.querySelector('form'); //targets HTML element it being the form
 const chatContainer = document.querySelector('#chat_container'); // selects the HTML element "chat_container"
-var counter = 0
-const globalarray = [];
+let counter = 0
+const chatHistory = [];
 let loadInterval;
 
 function loader(element){ // Loading dots when thinking about awnswer
@@ -39,7 +39,7 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 }
 
 
-function chatStripe(isAi, value, uniqueId, ) {
+function chatStripe(isAi, value, uniqueId,) {
     return (             // checks if its ai
         `
         <div class="wrapper ${isAi && 'ai' }"> 
@@ -50,13 +50,13 @@ function chatStripe(isAi, value, uniqueId, ) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="'test'" />      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="" />      
         </div>
         
         `
       // this creates the message that is generated
 
- 
+
 
     )
 
@@ -91,17 +91,20 @@ const handleSubmit = async (e) => {
     })
     clearInterval(loadInterval)
     messageDiv.innerHTML = ''; //resets the message div to an empty string
-    
+
     if (response.ok) {
         const data = await response.json(); //this gives us the actual response
         const parsedData = data.bot.trim();
-        counter++
         const copyText = () => {
-            globalarray.push(parsedData)
+            counter = chatHistory.length
+            chatHistory.push({
+                number: counter,
+                value: parsedData
+            })
     };
-    
         copyText()
         typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT reponse data
+        console.log(chatHistory)
     } else {
         const err = await response.text();
 
@@ -116,4 +119,9 @@ form.addEventListener('keyup',(e) => { //listens for when we press the enter key
         handleSubmit(e);
     }
 })
-console.log(globalarray)
+//function copyToClipboard(){
+   // let copiedText = chatHistory[`${counter} value`]
+   // copiedText.select();
+   // navigator.clipboard.write(copiedText.value)
+//}
+
