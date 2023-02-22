@@ -19,16 +19,6 @@ function loader(element){ // Loading dots when thinking about awnswer
     },300) //every 300 miliseconds adds a dot 3 times and then clears the text
 
 }
-async function copyToClipboard() {
-    try{
-        await navigator.clipboard.writeText(chatHistory[counter])
-        console.log('Content copied to clipboard');
-        //text is copied succesfully
-    } catch (err){
-        console.error('Failed to copy: ', err);
-        //rejected and failed to copy
-    }
-}
 function typeText(element,text){ // this allows the response of the bot to type out slowly making it seem more human
     let index = 0;
 
@@ -70,6 +60,16 @@ function chatStripe(isAi, value, uniqueId,) {
 
     )
 
+}
+async function copyToClipboard() {
+    try{
+        await navigator.clipboard.writeText(chatHistory[counter])
+        console.log('Content copied to clipboard');
+        //text is copied succesfully
+    } catch (err){
+        console.error('Failed to copy: ', err);
+        //rejected and failed to copy
+    }
 }
 const handleSubmit = async (e) => {
     e.preventDefault(); //prevents the default behaviour of the browser
