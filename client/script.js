@@ -40,6 +40,9 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 
 
 function chatStripe(isAi, value, uniqueId,) {
+    const copyToClipboard = e => {
+        console.log(e)
+    }
     return (             // checks if its ai
         `
         <div class="wrapper ${isAi && 'ai' }"> 
@@ -50,7 +53,7 @@ function chatStripe(isAi, value, uniqueId,) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="copyToClipboard()" />      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick={copyToClipboard} />      
         </div>
         
         `
@@ -61,9 +64,7 @@ function chatStripe(isAi, value, uniqueId,) {
     )
 
 }
-window.copyToClipboard = e => {
-    console.log(e)
-}
+
 const handleSubmit = async (e) => {
     e.preventDefault(); //prevents the default behaviour of the browser
 
