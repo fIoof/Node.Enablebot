@@ -39,8 +39,8 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 }
 
 
-function chatStripe(isAi, value, uniqueId,index) {
-    const index = chatHistory.findIndex((message) => message.id === uniqueId);
+function chatStripe(isAi, value, uniqueId, index2) {
+    let index2 = chatHistory.findIndex((message) => message.id === uniqueId);
     return (             // checks if its ai
         `
         <div class="wrapper ${isAi && 'ai' }"> 
@@ -51,7 +51,7 @@ function chatStripe(isAi, value, uniqueId,index) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="copyToClipboard(${index})" />      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="copyToClipboard(${index2})" />      
         </div>
         
         `
@@ -62,9 +62,9 @@ function chatStripe(isAi, value, uniqueId,index) {
     )
 
 }
-window.copyToClipboard = async function(index) {
+window.copyToClipboard = async function(index2) {
     try{
-        await navigator.clipboard.writeText(chatHistory[index])
+        await navigator.clipboard.writeText(chatHistory[index2])
         const lastItem = chatHistory[chatHistory.length - 1];
         if (lastItem) {
             await navigator.clipboard.writeText(lastItem.value);
