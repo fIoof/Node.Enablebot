@@ -39,7 +39,7 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 }
 
 
-function chatStripe(isAi, value, uniqueId,) {
+function chatStripe(isAi, value, uniqueId,index) {
     return (             // checks if its ai
         `
         <div class="wrapper ${isAi && 'ai' }"> 
@@ -50,7 +50,7 @@ function chatStripe(isAi, value, uniqueId,) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="copyToClipboard(index)" />      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="copyToClipboard(${index})" />      
         </div>
         
         `
