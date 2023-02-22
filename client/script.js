@@ -61,7 +61,8 @@ function chatStripe(isAi, value, uniqueId,) {
     )
 
 }
-window.copyToClipboard = async function() {
+window.copyToClipboard = async function(e) {
+    console.log(e)
     try{
         const lastItem = chatHistory[chatHistory.length - 1];
         if (lastItem) {
