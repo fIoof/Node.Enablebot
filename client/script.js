@@ -39,7 +39,7 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 }
 
 
-function chatStripe(isAi, value, uniqueId,) {
+function chatStripe(isAi, value, uniqueId, index) {
     return (             // checks if its ai
         `
         <div class="wrapper ${isAi && 'ai' }"> 
@@ -50,7 +50,7 @@ function chatStripe(isAi, value, uniqueId,) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="copyToClipboard()" />      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="copyToClipboard(${index})" />      
         </div>
         
         `
@@ -61,12 +61,12 @@ function chatStripe(isAi, value, uniqueId,) {
     )
 
 }
-window.copyToClipboard = async function() {
+window.copyToClipboard = async function(index) {
     try{
-        await navigator.clipboard.writeText(chatHistory[counter])
-        const lastItem = chatHistory[chatHistory.length - 1];
-        if (lastItem) {
-            await navigator.clipboard.writeText(lastItem.value);
+        await navigator.clipboard.writeText(chatHistory[index])
+        const item = chatHistory[index];
+        if (item) {
+            await navigator.clipboard.writeText(item.value);
         }
         console.log('Content copied to clipboard');
         //text is copied succesfully
@@ -90,7 +90,7 @@ const handleSubmit = async (e) => {
 
     chatContainer.scrollTop = chatContainer.scrollHeight; //this puts the message in view
 
-    const messageDiv = document.getElementById(uniqueId); //this fetches the message via a unique ID
+    const messageDiv = document.getElementById(uniqueId, chatHistory.length); //this fetches the message via a unique ID
 
     loader(messageDiv);
     // fetch data from server -> bot's response
