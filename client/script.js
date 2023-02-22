@@ -39,7 +39,10 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 }
 
 
-function chatStripe(isAi, value, uniqueId, chatHistory) {
+function chatStripe(isAi, value, uniqueId,) {
+    const copyToClipboard = e => {
+        console.log(e)
+    }
     return (             // checks if its ai
         `
         <div class="wrapper ${isAi && 'ai' }"> 
@@ -50,7 +53,7 @@ function chatStripe(isAi, value, uniqueId, chatHistory) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick=(${chatHistory}) />      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick={copyToClipboard} />      
         </div>
         
         `
@@ -61,6 +64,7 @@ function chatStripe(isAi, value, uniqueId, chatHistory) {
     )
 
 }
+
 const handleSubmit = async (e) => {
     e.preventDefault(); //prevents the default behaviour of the browser
 
@@ -96,7 +100,7 @@ const handleSubmit = async (e) => {
         const data = await response.json(); //this gives us the actual response
         const parsedData = data.bot.trim();
         const copyText = () => {
-            counter = chatHistory.length
+            counter++
             chatHistory.push({
                 number: counter,
                 value: parsedData
@@ -119,14 +123,14 @@ form.addEventListener('keyup',(e) => { //listens for when we press the enter key
         handleSubmit(e);
     }
 })
-window.copyToClipboard = async function() {
-   var copiedText = chatHistory[counter]
-   copiedText.select();
-   copyText.setSelectionRange(0, 99999);
-   navigator.clipboard.write(copiedText.value)
-   .then(() => {
-    alert("copied to clipboard");
-   }
-)
-}
+// function copyToClipboard(){
+//    var copiedText = chatHistory.get(parsedData)
+//    copiedText.select();
+//    copyText.setSelectionRange(0, 99999);
+//    navigator.clipboard.write(copiedText.value)
+//    .then(() => {
+//     alert("copied to clipboard");
+//    }
+// )
+// }
 
