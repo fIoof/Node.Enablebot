@@ -19,18 +19,15 @@ function loader(element){ // Loading dots when thinking about awnswer
     },300) //every 300 miliseconds adds a dot 3 times and then clears the text
 
 }
-function copyToClipboard() {
-    let copyText = chatHistory.value
-    copyText.select();
-    copyText.setSelectionRange(0, 99999);
-    navigator.clipboard
-        .writeText(copyText.value)
-        .then(() => {
-            alert("successfully copied");
-        })
-        .catch(() => {
-            alert("something went wrong");
-        });
+async function copyToClipboard() {
+    try{
+        await navigator.clipboard.writeText(chatHistory[counter])
+        console.log('Content copied to clipboard');
+        //text is copied succesfully
+    } catch (err){
+        console.error('Failed to copy: ', err);
+        //rejected and failed to copy
+    }
 }
 function typeText(element,text){ // this allows the response of the bot to type out slowly making it seem more human
     let index = 0;
@@ -52,7 +49,7 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 }
 
 
-function chatStripe(isAi, value, uniqueId, chatHistory) {
+function chatStripe(isAi, value, uniqueId,) {
     return (             // checks if its ai
         `
         <div class="wrapper ${isAi && 'ai' }"> 
@@ -109,7 +106,7 @@ const handleSubmit = async (e) => {
         const data = await response.json(); //this gives us the actual response
         const parsedData = data.bot.trim();
         const copyText = () => {
-            counter = chatHistory.length
+            counter++
             chatHistory.push({
                 number: counter,
                 value: parsedData
