@@ -50,9 +50,7 @@ function chatStripe(isAi, value, uniqueId,) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick={e => {
-             console.log(e)
-         } />      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="copyToClipboard()" />      
         </div>
         
         `
@@ -63,19 +61,8 @@ function chatStripe(isAi, value, uniqueId,) {
     )
 
 }
-window.copyToClipboard = async function(e) {
+window.copyToClipboard = e => {
     console.log(e)
-    try{
-        const lastItem = chatHistory[chatHistory.length - 1];
-        if (lastItem) {
-            await navigator.clipboard.writeText(lastItem.value);
-        }
-        console.log('Content copied to clipboard');
-        //text is copied succesfully
-    } catch (err){
-        console.error('Failed to copy: ', err);
-        //rejected and failed to copy
-    }
 }
 const handleSubmit = async (e) => {
     e.preventDefault(); //prevents the default behaviour of the browser
