@@ -40,6 +40,7 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 
 
 function chatStripe(isAi, value, uniqueId,index) {
+    const index = chatHistory.findIndex((message) => message.id === uniqueId);
     return (             // checks if its ai
         `
         <div class="wrapper ${isAi && 'ai' }"> 
@@ -50,7 +51,7 @@ function chatStripe(isAi, value, uniqueId,index) {
                         alt="${isAi ? 'bot' : 'user'}"   
                     />  
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="copyToClipboard(${uniqueId})" />      
+         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="copyToClipboard(${index})" />      
         </div>
         
         `
@@ -112,7 +113,7 @@ const handleSubmit = async (e) => {
         const copyText = () => {
             counter++
             chatHistory.push({
-                number: counter,
+                id: uniqueId,
                 value: parsedData
             })
     };
