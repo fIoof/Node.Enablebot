@@ -63,11 +63,7 @@ function chatStripe(isAi, value, uniqueId, index) {
 }
 window.copyToClipboard = async function(index) {
     try{
-        await navigator.clipboard.writeText(chatHistory[index].value)
-        const item = chatHistory[index];
-        if (item) {
-            await navigator.clipboard.writeText(item.value);
-        }
+        await navigator.clipboard.writeText(chatHistory[index].value);
         console.log('Content copied to clipboard');
         //text is copied succesfully
     } catch (err){
