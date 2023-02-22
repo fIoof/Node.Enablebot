@@ -123,14 +123,14 @@ form.addEventListener('keyup',(e) => { //listens for when we press the enter key
         handleSubmit(e);
     }
 })
-// function copyToClipboard(){
-//    var copiedText = chatHistory.get(parsedData)
-//    copiedText.select();
-//    copyText.setSelectionRange(0, 99999);
-//    navigator.clipboard.write(copiedText.value)
-//    .then(() => {
-//     alert("copied to clipboard");
-//    }
-// )
-// }
+window.copyToClipboard = async function() {
+   var copiedText = chatHistory.get(parsedData)
+   copiedText.select();
+   copyText.setSelectionRange(0, 99999);
+   navigator.clipboard.write(copiedText.value)
+   .then(() => {
+    alert("copied to clipboard");
+   }
+)
+}
 
