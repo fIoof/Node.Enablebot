@@ -91,10 +91,9 @@ window.copyToClipboard = async function(id, from) {
 }
 const handleSubmit = async (e) => {
     e.preventDefault(); //prevents the default behaviour of the browser
-
     const data = new FormData(form);
-    const uniqueId = generateUniqueId();
     const uniqueId2 = generateUniqueId()
+    const uniqueId = generateUniqueId();
     console.log(uniqueId2)
     // User's Chatstripe
     chatContainer.innerHTML += chatStripe(false, data.get('prompt'), uniqueId2); //if user passes the data from the form
