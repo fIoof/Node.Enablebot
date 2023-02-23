@@ -39,7 +39,7 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 }
 
 
-function chatStripe(isAi, value, uniqueId, uniqueId2) {
+function chatStripe(isAi, value, uniqueId,) {
     if (isAi) {
         return (             // checks if its ai
             `
@@ -65,7 +65,7 @@ function chatStripe(isAi, value, uniqueId, uniqueId2) {
                         <img src="${user}" alt="user" />
                     </div>
                     <div class="message" id="${uniqueId}">${value}</div>
-                    <img class="copyimg" src="${copy}" onclick="copyToClipboard('${uniqueId2}', true)">
+                    <img class="copyimg" src="${copy}" onclick="copyToClipboard('${uniqueId}', true)">
                 </div>
             </div>
         `
@@ -91,11 +91,10 @@ const handleSubmit = async (e) => {
 
     const data = new FormData(form);
     const uniqueId = generateUniqueId();
-    const uniqueId2 = generateUniqueId()
     // User's Chatstripe
-    chatContainer.innerHTML += chatStripe(false, data.get('prompt'),uniqueId2); //if user passes the data from the form
+    chatContainer.innerHTML += chatStripe(false, data.get('prompt'),uniqueId); //if user passes the data from the form
     const usercopyText = () => {
-        chatHistory.set(uniqueId2, { id: uniqueId2, value: data.get('prompt') });
+        chatHistory.set(uniqueId, { id: uniqueId, value: data.get('prompt') });
     }
     usercopyText()
     form.reset(); // resets the data in the form so a new awnswer can be asked.
