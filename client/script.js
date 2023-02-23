@@ -71,7 +71,7 @@ function chatStripe(isAi, value, uniqueId, uniqueId2) {
         )}
 
 }
-window.copyToClipboard = async function(id, isBot) {
+window.copyToClipboard = async function(id) {
     try {
         const chatdata = chatHistory.get(id);
         if (chatdata) {
