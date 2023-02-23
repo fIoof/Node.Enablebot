@@ -89,6 +89,7 @@ const handleSubmit = async (e) => {
     e.preventDefault(); //prevents the default behaviour of the browser
 
     const data = new FormData(form);
+    const uniqueId = generateUniqueId();
     // User's Chatstripe
     chatContainer.innerHTML += chatStripe(false, data.get('prompt')); //if user passes the data from the form
 
