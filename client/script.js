@@ -4,7 +4,7 @@ import copy from './assets/copy.svg';
 
 const form = document.querySelector('form'); //targets HTML element it being the form
 const chatContainer = document.querySelector('#chat_container'); // selects the HTML element "chat_container"
-
+let counter = 0
 const chatHistory = new Map();
 let loadInterval;
 
@@ -39,14 +39,15 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 }
 
 
-function chatStripe(isAi, value, uniqueId,) {
-        return (
+function chatStripe(isAi, value, uniqueId, uniqueId2) {
+    if (isAi) {
+        return (             // checks if its ai
             `
-        <div class="wrapper ${isAi && 'ai'}"> 
+        <div class="wrapper ai"> 
             <div class="chat">
                 <div class="profile">
                     <Img
-                        <img src="${isAi ? bot : user}" alt="${isAi ? 'bot' : 'user'}" /> 
+                        <img src="${bot}" alt="bot" /> 
         </div> 
          <div class="message" id=${uniqueId}>${value}</div>
          <img class="copyimg" src="${copy}" onclick="copyToClipboard('${uniqueId}')" />      
@@ -55,13 +56,27 @@ function chatStripe(isAi, value, uniqueId,) {
         `
             // this creates the message that is generated
         )
+    }else{
+        return(
+            `
+            <div class="wrapper">
+                <div class="chat">
+                    <div class="profile">
+                        <img src="${user}" alt="user" />
+                    </div>
+                    <div class="message" id="${uniqueId}">${value}</div>
+                    <img class="copyimg" src="${copy}" onclick="copyToClipboard('${uniqueId2}')">
+                </div>
+            </div>
+        `
+        )}
+
 }
-window.copyToClipboard = async function(id, isBot) {
-    try{
-        await navigator.clipboard.writeText(chatHistory[uniqueId])
-        const lastItem = chatHistory[chatHistory.length - 1];
-        if (lastItem) {
-            await navigator.clipboard.writeText(lastItem.value);
+window.copyToClipboard = async function(id) {
+    try {
+        const chatStripe = chatHistory.get(id);
+        if (chatStripe) {
+            await navigator.clipboard.writeText(chatStripe.value);
             console.log('Content copied to clipboard');
             //text is copied succesfully
         }
@@ -75,10 +90,11 @@ const handleSubmit = async (e) => {
 
     const data = new FormData(form);
     const uniqueId = generateUniqueId();
+    const uniqueId2 = generateUniqueId()
     // User's Chatstripe
-    chatContainer.innerHTML += chatStripe(false, data.get('prompt'),uniqueId); //if user passes the data from the form
+    chatContainer.innerHTML += chatStripe(false, data.get('prompt'),uniqueId2); //if user passes the data from the form
     const usercopyText = () => {
-        chatHistory.set(uniqueId, { id: uniqueId, value: data.get('prompt') });
+        chatHistory.set(uniqueId, {id: uniqueId2, value: data.get('prompt')});
     }
     usercopyText()
     form.reset(); // resets the data in the form so a new awnswer can be asked.
@@ -108,6 +124,7 @@ const handleSubmit = async (e) => {
         const data = await response.json(); //this gives us the actual response
         const parsedData = data.bot.trim();
         const copyText = () => {
+            counter++
             chatHistory.set(uniqueId, { id: uniqueId, value: parsedData });
         };
         copyText()
