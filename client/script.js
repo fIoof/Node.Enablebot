@@ -76,10 +76,9 @@ window.copyToClipboard = async function(id) {
     try {
         const chatStripe = chatHistory.get(id);
         if (chatStripe) {
-            const uniqueId = chatStripe.id;
-            const value = chatStripe.value;
-            await navigator.clipboard.writeText(value);
+            await navigator.clipboard.writeText(chatStripe.value);
             console.log('Content copied to clipboard');
+            //text is copied succesfully
         }
     } catch (err){
         console.error('Failed to copy: ', err);
