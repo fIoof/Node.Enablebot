@@ -91,12 +91,12 @@ const handleSubmit = async (e) => {
     const data = new FormData(form);
     const uniqueId = generateUniqueId();
     const uniqueId2 = generateUniqueId()
-    // User's Chatstripe
-    chatContainer.innerHTML += chatStripe(false, data.get('prompt'),uniqueId2); //if user passes the data from the form
     const usercopyText = () => {
         chatHistory.set(uniqueId2, {id: uniqueId2, value: data.get('prompt')});
     }
     usercopyText()
+    // User's Chatstripe
+    chatContainer.innerHTML += chatStripe(false, data.get('prompt'),uniqueId2); //if user passes the data from the form
     form.reset(); // resets the data in the form so a new awnswer can be asked.
 
     //Bot's Chatstripe
