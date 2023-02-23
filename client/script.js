@@ -40,44 +40,28 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 
 
 function chatStripe(isAi, value, uniqueId,) {
-    if (isAi) {
-        return (             // checks if its ai
+        return (
             `
-        <div class="wrapper ai"> 
+        <div class="wrapper ${isAi && 'ai'}"> 
             <div class="chat">
                 <div class="profile">
                     <Img
-                        <img src="${bot}" alt="bot" /> 
+                        <img src="${isAi ? bot : user}" alt="${isAi ? 'bot' : 'user'}" /> 
         </div> 
          <div class="message" id=${uniqueId}>${value}</div>
-         <img class="copyimg" src="${copy}" onclick="copyToClipboard('${uniqueId}', false)" />      
+         <img class="copyimg" src="${copy}" onclick="copyToClipboard('${uniqueId}')" />      
         </div>
         </div>
         `
             // this creates the message that is generated
         )
-    }else{
-        return(
-            `
-            <div class="wrapper">
-                <div class="chat">
-                    <div class="profile">
-                        <img src="${user}" alt="user" />
-                    </div>
-                    <div class="message" id="${uniqueId}">${value}</div>
-                    <img class="copyimg" src="${copy}" onclick="copyToClipboard('${uniqueId}', true)">
-                </div>
-            </div>
-        `
-        )}
-
 }
 window.copyToClipboard = async function(id, isBot) {
-    try {
-        const chatdata = chatHistory.get(id);
-        if (chatdata) {
-            const messageToCopy = isBot ? chatdata.id : chatdata.value;
-            await navigator.clipboard.writeText(messageToCopy);
+    try{
+        await navigator.clipboard.writeText(chatHistory[uniqueId])
+        const lastItem = chatHistory[chatHistory.length - 1];
+        if (lastItem) {
+            await navigator.clipboard.writeText(lastItem.value);
             console.log('Content copied to clipboard');
             //text is copied succesfully
         }
