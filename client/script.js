@@ -4,7 +4,6 @@ import copy from './assets/copy.svg';
 
 const form = document.querySelector('form'); //targets HTML element it being the form
 const chatContainer = document.querySelector('#chat_container'); // selects the HTML element "chat_container"
-let counter = 0
 const chatHistory = new Map();
 let loadInterval;
 
@@ -65,7 +64,7 @@ function chatStripe(isAi, value, uniqueId, uniqueId2) {
                         <img src="${user}" alt="user" />
                     </div>
                     <div class="message" id="${uniqueId}">${value}</div>
-                    <img class="copyimg" src="${copy}" onclick="copyToClipboard('${uniqueId2}')">
+                    <img class="copyimg" src="${copy}" onclick="copyToClipboard('${uniqueId}')">
                 </div>
             </div>
         `
