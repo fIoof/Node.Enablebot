@@ -50,7 +50,7 @@ function chatStripe(isAi, value, uniqueId, uniqueId2) {
                         <img src="${bot}" alt="bot" /> 
         </div> 
          <div class="message" id=${uniqueId}>${value}</div>
-         <img class="copyimg" src="${copy}" onclick="copyToClipboard('${uniqueId}')" />      
+         <img class="copyimg" src="${copy}" onclick="copyToClipboard('${uniqueId}', false)" />      
         </div>
         </div>
         `
@@ -65,18 +65,19 @@ function chatStripe(isAi, value, uniqueId, uniqueId2) {
                         <img src="${user}" alt="user" />
                     </div>
                     <div class="message" id="${uniqueId}">${value}</div>
-                    <img class="copyimg" src="${copy}" onclick="copyToClipboard('${uniqueId2}')">
+                    <img class="copyimg" src="${copy}" onclick="copyToClipboard('${uniqueId2}', true)">
                 </div>
             </div>
         `
         )}
 
 }
-window.copyToClipboard = async function(id) {
+window.copyToClipboard = async function(id, isBot) {
     try {
         const chatStripe = chatHistory.get(id);
         if (chatStripe) {
-            await navigator.clipboard.writeText(chatStripe.value);
+            const messageToCopy = isBot ? chatStripe.value : chatStripe.id;
+            await navigator.clipboard.writeText(messageToCopy);
             console.log('Content copied to clipboard');
             //text is copied succesfully
         }
