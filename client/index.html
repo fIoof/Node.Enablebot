@@ -10,13 +10,13 @@
   <body>
     <div id="app">
       <div id="mySidepanel" class="sidepanel">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="javascript:void(0)" class="closebtn" onclick="`${closeNav()}`">×</a>
         <a href="#">About</a>
         <a href="#">Services</a>
         <a href="#">Clients</a>
         <a href="#">Contact</a>
       </div>
-      <button class="openbtn" onclick="openNav()">☰ Toggle Sidepanel</button> 
+      <button class="openbtn" onclick="`${openNav()}`">☰ Toggle Sidepanel</button> 
       <div id="chat_container"></div>
       <form>
         <textarea name="prompt" rows="1" cols="1" placeholder="Ask EnableBot..."></textarea>
