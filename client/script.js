@@ -40,34 +40,44 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 
 
 function chatStripe(isAi, value, uniqueId) {
-    return (             // checks if its ai
-        `
-        <div class="wrapper ${isAi && 'ai' }"> 
+    if (isAi) {
+        return (             // checks if its ai
+            `
+        <div class="wrapper ai"> 
             <div class="chat">
                 <div class="profile">
                     <Img
-                        src="${isAi ? bot : user }"
-                        alt="${isAi ? 'bot' : 'user'}"   
-                    />  
+                        <img src="${bot}" alt="bot" /> 
         </div> 
-         <div class="message" id=${uniqueId}>${value}</div><img class="copyimg" src="${copy}" onclick="copyToClipboard('${uniqueId}')" />      
+         <div class="message" id=${uniqueId}>${value}</div>
+         <img class="copyimg" src="${copy}" onclick="copyToClipboard('${uniqueId}')" />      
         </div>
-        
+        </div>
         `
-      // this creates the message that is generated
-
-
-
+        // this creates the message that is generated
     )
+    }else{
+        return(
+            `
+            <div class="wrapper">
+                <div class="chat">
+                    <div class="profile">
+                        <img src="${user}" alt="user" />
+                    </div>
+                    <div class="message" id="${uniqueId}">${value}</div>
+                    <img class="copyimg" src="${copy}" onclick="copyToClipboard('${uniqueId}')">
+                </div>
+            </div>
+        `
+        )}
 
 }
 window.copyToClipboard = async function(id) {
     try {
-        const chatStripe = chatHistory.get(id);
+        const chatStripe = chatHistory.get(id) || document.getElementById(id).textContent; // get the chat stripe by ID or directly from the DOM
         if (chatStripe) {
-            await navigator.clipboard.writeText(chatStripe.value);
+            await navigator.clipboard.writeText(chatStripe.value || chatStripe); // copy the value of the chat stripe to the clipboard
             console.log('Content copied to clipboard');
-            //text is copied succesfully
         }
     } catch (err){
         console.error('Failed to copy: ', err);
@@ -78,13 +88,13 @@ const handleSubmit = async (e) => {
     e.preventDefault(); //prevents the default behaviour of the browser
 
     const data = new FormData(form);
+    const uniqueId = generateUniqueId();
     // User's Chatstripe
     chatContainer.innerHTML += chatStripe(false, data.get('prompt')); //if user passes the data from the form
 
     form.reset(); // resets the data in the form so a new awnswer can be asked.
 
     //Bot's Chatstripe
-    const uniqueId = generateUniqueId();
     chatContainer.innerHTML += chatStripe(true, " ", uniqueId); // is empty as it is filling up as it is loading
 
     chatContainer.scrollTop = chatContainer.scrollHeight; //this puts the message in view
