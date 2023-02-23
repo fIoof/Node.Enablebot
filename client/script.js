@@ -5,7 +5,7 @@ import copy from './assets/copy.svg';
 const form = document.querySelector('form'); //targets HTML element it being the form
 const chatContainer = document.querySelector('#chat_container'); // selects the HTML element "chat_container"
 let counter = 0
-const chatHistory = [];
+const chatHistory = new Map();
 let loadInterval;
 
 function loader(element){ // Loading dots when thinking about awnswer
@@ -61,12 +61,12 @@ function chatStripe(isAi, value, uniqueId,index) {
     )
 
 }
-window.copyToClipboard = async function(index) {
+window.copyToClipboard = async function(id) {
     try{
-        await navigator.clipboard.writeText(chatHistory[index])
-        const lastItem = chatHistory[chatHistory.length - 1];
-        if (lastItem) {
-            await navigator.clipboard.writeText(lastItem.value);
+        const chatStripe = chatHistory.get(id);
+        if (chatStripe) {
+            await navigator.clipboard.writeText(chatStripe);
+            console.log('Content copied to clipboard');
         }
         console.log('Content copied to clipboard');
         //text is copied succesfully
