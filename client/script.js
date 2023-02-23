@@ -62,14 +62,13 @@ function chatStripe(isAi, value, uniqueId,index) {
 
 }
 window.copyToClipboard = async function(id) {
-    try{
+    try {
         const chatStripe = chatHistory.get(id);
         if (chatStripe) {
-            await navigator.clipboard.writeText(chatStripe);
+            await navigator.clipboard.writeText(chatStripe.value);
             console.log('Content copied to clipboard');
+            //text is copied succesfully
         }
-        console.log('Content copied to clipboard');
-        //text is copied succesfully
     } catch (err){
         console.error('Failed to copy: ', err);
         //rejected and failed to copy
@@ -111,10 +110,7 @@ const handleSubmit = async (e) => {
         const parsedData = data.bot.trim();
         const copyText = () => {
             counter++
-            chatHistory.push({
-                id: uniqueId,
-                value: parsedData
-            })
+            chatHistory.set(uniqueId, { id: uniqueId, value: parsedData });
     };
         copyText()
         typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT reponse data
