@@ -95,7 +95,7 @@ const handleSubmit = async (e) => {
     // User's Chatstripe
     chatContainer.innerHTML += chatStripe(false, data.get('prompt'),uniqueId2); //if user passes the data from the form
     const usercopyText = () => {
-        chatHistory.set(uniqueId, {id: uniqueId2, value: data.get('prompt')});
+        chatHistory.set(uniqueId, { id: uniqueId, value: data.get('prompt') });
     }
     usercopyText()
     form.reset(); // resets the data in the form so a new awnswer can be asked.
