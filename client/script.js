@@ -65,7 +65,7 @@ function chatStripe(isAi, value, uniqueId) {
                         <img src="${user}" alt="user" />
                     </div>
                     <div class="message" id="${uniqueId}">${value}</div>
-                    <img class="copyimg" src="${copy}" onclick="copyToClipboard('${uniqueId}')">
+                    <img class="copyimg" src="${copy}" onclick="copyToClipboard('${uniqueId2}')">
                 </div>
             </div>
         `
@@ -90,9 +90,13 @@ const handleSubmit = async (e) => {
 
     const data = new FormData(form);
     const uniqueId = generateUniqueId();
+    const uniqueId2 = generateUniqueId()
     // User's Chatstripe
-    chatContainer.innerHTML += chatStripe(false, data.get('prompt')); //if user passes the data from the form
-
+    chatContainer.innerHTML += chatStripe(false, data.get('prompt'),uniqueId2); //if user passes the data from the form
+    const usercopyText = () => {
+        chatHistory.set(uniqueId, {id: uniqueId2, value: data.get('prompt')});
+    }
+    usercopyText()
     form.reset(); // resets the data in the form so a new awnswer can be asked.
 
     //Bot's Chatstripe
