@@ -54,8 +54,8 @@ function chatStripe(isAi, value, uniqueId) {
         </div>
         </div>
         `
-        // this creates the message that is generated
-    )
+            // this creates the message that is generated
+        )
     }else{
         return(
             `
@@ -91,12 +91,12 @@ const handleSubmit = async (e) => {
     const data = new FormData(form);
     const uniqueId = generateUniqueId();
     // User's Chatstripe
-    chatContainer.innerHTML += chatStripe(false, data.get('prompt'),uniqueId); //if user passes the data from the form
+    chatContainer.innerHTML += chatStripe(false, data.get('prompt')); //if user passes the data from the form
 
     form.reset(); // resets the data in the form so a new awnswer can be asked.
-    chatHistory.set(uniqueId, { id: uniqueId, value: data.get('prompt') });
+
     //Bot's Chatstripe
-    chatContainer.innerHTML += chatStripe(true, " ", generateUniqueId()); // is empty as it is filling up as it is loading
+    chatContainer.innerHTML += chatStripe(true, " ", uniqueId); // is empty as it is filling up as it is loading
 
     chatContainer.scrollTop = chatContainer.scrollHeight; //this puts the message in view
 
@@ -122,7 +122,7 @@ const handleSubmit = async (e) => {
         const copyText = () => {
             counter++
             chatHistory.set(uniqueId, { id: uniqueId, value: parsedData });
-    };
+        };
         copyText()
         typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT reponse data
         console.log(chatHistory)
