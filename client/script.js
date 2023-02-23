@@ -39,7 +39,7 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 }
 
 
-function chatStripe(isAi, value, uniqueId) {
+function chatStripe(isAi, value, uniqueId, uniqueId2) {
     if (isAi) {
         return (             // checks if its ai
             `
@@ -76,9 +76,10 @@ window.copyToClipboard = async function(id) {
     try {
         const chatStripe = chatHistory.get(id);
         if (chatStripe) {
-            await navigator.clipboard.writeText(chatStripe.value);
+            const uniqueId = chatStripe.id;
+            const value = chatStripe.value;
+            await navigator.clipboard.writeText(value);
             console.log('Content copied to clipboard');
-            //text is copied succesfully
         }
     } catch (err){
         console.error('Failed to copy: ', err);
