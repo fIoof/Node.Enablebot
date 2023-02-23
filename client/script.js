@@ -95,8 +95,9 @@ const handleSubmit = async (e) => {
     const data = new FormData(form);
     const uniqueId = generateUniqueId();
     const uniqueId2 = generateUniqueId()
+    console.log(uniqueId2)
     // User's Chatstripe
-    chatContainer.innerHTML += chatStripe(false, data.get('prompt'),uniqueId2); //if user passes the data from the form
+    chatContainer.innerHTML += chatStripe(false, data.get('prompt'), uniqueId2); //if user passes the data from the form
     const usercopyText = () => {
         chatHistory.set(uniqueId2, { id: uniqueId2, value: data.get('prompt') });
     }
