@@ -74,11 +74,10 @@ function chatStripe(isAi, value, uniqueId) {
 }
 window.copyToClipboard = async function(id) {
     try {
-        const chatStripe = chatHistory.get(id);
+        const chatStripe = chatHistory.get(id) || document.getElementById(id).textContent; // get the chat stripe by ID or directly from the DOM
         if (chatStripe) {
-            await navigator.clipboard.writeText(chatStripe.value);
+            await navigator.clipboard.writeText(chatStripe.value || chatStripe); // copy the value of the chat stripe to the clipboard
             console.log('Content copied to clipboard');
-            //text is copied succesfully
         }
     } catch (err){
         console.error('Failed to copy: ', err);
@@ -89,8 +88,8 @@ const handleSubmit = async (e) => {
     e.preventDefault(); //prevents the default behaviour of the browser
 
     const data = new FormData(form);
-    // User's Chatstripe
     const uniqueId = generateUniqueId();
+    // User's Chatstripe
     chatContainer.innerHTML += chatStripe(false, data.get('prompt')); //if user passes the data from the form
 
     form.reset(); // resets the data in the form so a new awnswer can be asked.
