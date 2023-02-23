@@ -64,7 +64,7 @@ function chatStripe(isAi, value, uniqueId, uniqueId2) {
                         <img src="${user}" alt="user" />
                     </div>
                     <div class="message" id="${uniqueId2}">${value}</div>
-                    <img class="copyimg" src="${copy}" onclick="copyToClipboard('${uniqueId2}', 'user')">
+                    <img class="copyimg" src="${copy}" onclick="copyToClipboard('${uniqueId2}', true)">
                 </div>
             </div>
         `
@@ -76,6 +76,11 @@ window.copyToClipboard = async function(id, from) {
         const chatdata = chatHistory.get(id);
         if (chatdata) {
             const messageToCopy = from === 'bot' ? chatdata.id : chatdata.value;
+            await navigator.clipboard.writeText(messageToCopy);
+            console.log('Content copied to clipboard');
+        } else {
+            const isUser = from === 'user';
+            const messageToCopy = isUser ? document.getElementById(id).getAttribute('data-message') : '';
             await navigator.clipboard.writeText(messageToCopy);
             console.log('Content copied to clipboard');
         }
