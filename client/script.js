@@ -71,14 +71,13 @@ function chatStripe(isAi, value, uniqueId, uniqueId2) {
         )}
 
 }
-window.copyToClipboard = async function(id) {
+window.copyToClipboard = async function(id, from) {
     try {
         const chatdata = chatHistory.get(id);
         if (chatdata) {
-            const messageToCopy = chatdata.value;
+            const messageToCopy = from === 'bot' ? chatdata.id : chatdata.value;
             await navigator.clipboard.writeText(messageToCopy);
             console.log('Content copied to clipboard');
-            //text is copied succesfully
         }
     } catch (err){
         console.error('Failed to copy: ', err);
