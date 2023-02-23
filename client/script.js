@@ -4,7 +4,6 @@ import copy from './assets/copy.svg';
 
 const form = document.querySelector('form'); //targets HTML element it being the form
 const chatContainer = document.querySelector('#chat_container'); // selects the HTML element "chat_container"
-let counter = 0
 const chatHistory = new Map();
 let loadInterval;
 
@@ -95,7 +94,7 @@ const handleSubmit = async (e) => {
     // User's Chatstripe
     chatContainer.innerHTML += chatStripe(false, data.get('prompt'),uniqueId2); //if user passes the data from the form
     const usercopyText = () => {
-        chatHistory.set(uniqueId, { id: uniqueId, value: data.get('prompt') });
+        chatHistory.set(uniqueId2, { id: uniqueId2, value: data.get('prompt') });
     }
     usercopyText()
     form.reset(); // resets the data in the form so a new awnswer can be asked.
@@ -125,7 +124,6 @@ const handleSubmit = async (e) => {
         const data = await response.json(); //this gives us the actual response
         const parsedData = data.bot.trim();
         const copyText = () => {
-            counter++
             chatHistory.set(uniqueId, { id: uniqueId, value: parsedData });
         };
         copyText()
