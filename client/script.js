@@ -74,9 +74,9 @@ function chatStripe(isAi, value, uniqueId, uniqueId2) {
 }
 window.copyToClipboard = async function(id, isBot) {
     try {
-        const chatStripe = chatHistory.get(id);
-        if (chatStripe) {
-            const messageToCopy = isBot ? chatStripe.value : chatStripe.id;
+        const chatdata = chatHistory.get(id);
+        if (chatdata) {
+            const messageToCopy = isBot ? chatdata.value : chatdata.id;
             await navigator.clipboard.writeText(messageToCopy);
             console.log('Content copied to clipboard');
             //text is copied succesfully
