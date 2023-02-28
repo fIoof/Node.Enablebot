@@ -90,7 +90,7 @@ body {
 
 .ai .profile {
   background: white;
-  border: black;
+  border: black 1px solid;
 
 }
 
