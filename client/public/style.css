@@ -89,7 +89,9 @@ body {
 }
 
 .ai .profile {
-  background: #71afd9;
+  background: white;
+  border: black;
+
 }
 
 .profile img {
