@@ -47,6 +47,7 @@ body {
 .wrapper {
   width: 100%;
   padding: 15px;
+  background: #c1c1c1;
 }
 
 .ai {
