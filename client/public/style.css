@@ -155,7 +155,7 @@ form img {
   width: 30px;
   height: 30px;
 }
-.sidepanel {
+.mySidepanel {
   height: 100%;
   width: 0;
   position: fixed;
@@ -167,12 +167,12 @@ form img {
   transition: 0.5s;
 }
 
-.sidepanel .content {
+.mySidepanel .content {
   margin-left: 60px;
   padding: 20px;
 }
 
-.sidepanel p {
+.mySidepanel p {
   color: white;
   font-size: 25px;
 }
