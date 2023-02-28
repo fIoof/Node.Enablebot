@@ -1,11 +1,14 @@
 
-function openNav() {
-    console.log('test')
-    document.getElementById("mySidepanel").style.width = "250px";
-}
-
-/* Set the width of the sidebar to 0 (hide it) */
-function closeNav() {
-    console.log('close test')
-    document.getElementById("mySidepanel").style.width = "0";
+var btn = document.querySelector('.toggle');
+var btnst = true;
+btn.onclick = function() {
+    if(btnst == true) {
+        document.querySelector('.toggle span').classList.add('toggle');
+        document.getElementById('sidebar').classList.add('sidebarshow');
+        btnst = false;
+    }else if(btnst == false) {
+        document.querySelector('.toggle span').classList.remove('toggle');
+        document.getElementById('sidebar').classList.remove('sidebarshow');
+        btnst = true;
+    }
 }
