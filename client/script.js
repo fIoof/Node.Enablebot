@@ -1,6 +1,6 @@
 import bot from './assets/bot.png'; //Imports Icons for us to use
 import user from './assets/user.svg';
-import copy from './assets/copy.svg';
+import copy from './assets/copy.svg'; //attach to img SRC in chatstripe for copy function
 const form = document.querySelector('form'); //targets HTML element it being the form
 const chatContainer = document.querySelector('#chat_container'); // selects the HTML element "chat_container"
 const chatHistory = new Map();
@@ -47,7 +47,7 @@ function chatStripe(isAi, value, uniqueId,) {
                         <img src="${bot}" alt="bot" /> 
         </div> 
          <div class="message" id=${uniqueId}>${value}</div>
-         <img class="copyimg" src="" onclick="copyToClipboard('${uniqueId}')" />      
+         <img class="copyimg" src="' '" onclick="copyToClipboard('${uniqueId}')" />      
         </div>
         </div>
         `
@@ -62,7 +62,7 @@ function chatStripe(isAi, value, uniqueId,) {
                         <img src="${user}" alt="user" />
                     </div>
                     <div class="message" id="${uniqueId}">${value}</div>
-                    <img class="copyimg" src="${copy}" onclick="copyToClipboard('${uniqueId}')">
+                    <img class="copyimg" src="' '" onclick="copyToClipboard('${uniqueId}')">
                 </div>
             </div>
         `
