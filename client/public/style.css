@@ -14,7 +14,7 @@ body {
 #app {
   width: 100vw;
   height: 100vh;
-  background: #189ADE;
+  background: #2b2d2e;
 
   display: flex;
   flex-direction: column;
@@ -50,7 +50,7 @@ body {
 }
 
 .ai {
-  background: #8dd0f3;
+  background: #2b2d2e;
 }
 .copyimg {
   width: 30px;
@@ -86,7 +86,7 @@ body {
 }
 
 .ai .profile {
-  background: #d2edfa;
+  background: #2b2d2e;
 }
 
 .profile img {
@@ -119,7 +119,7 @@ form {
   max-width: 1280px;
   margin: 0 auto;
   padding: 10px;
-  background: #8dd0f3;
+  background: white;
   
   display: flex;
   flex-direction: row;
