@@ -8,11 +8,13 @@
     <link rel="stylesheet" href="./public/style.css">
   </head>
   <body>
-  <button onclick="openNav()">Open Sidepanel</button>
   <div id="mySidepanel" class="sidepanel">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-    <p>Here is your text content!</p>
+    <div class="content">
+      <p>Here is your text content!</p>
+    </div>
   </div>
+  <div id="openBtn" onclick="openNav()">Open Sidepanel</div>
     <div id="app">
       <div id="chat_container"></div>
       <form>
