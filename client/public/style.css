@@ -48,10 +48,12 @@ body {
   width: 100%;
   padding: 15px;
   background: #c1c1c1;
+  opacity: 80%;
 }
 
 .ai {
   background: #c1c1c1;
+  opacity: 80%;
 }
 .copyimg {
   width: 30px;
