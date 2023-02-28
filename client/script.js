@@ -47,7 +47,7 @@ function chatStripe(isAi, value, uniqueId,) {
                         <img src="${bot}" alt="bot" /> 
         </div> 
          <div class="message" id=${uniqueId}>${value}</div>
-         <\\\img class="copyimg" src="${copy}" onclick="copyToClipboard('${uniqueId}')" />      
+         <img class="copyimg" src="" onclick="copyToClipboard('${uniqueId}')" />      
         </div>
         </div>
         `
