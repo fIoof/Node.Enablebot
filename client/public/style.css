@@ -155,3 +155,32 @@ form img {
   width: 30px;
   height: 30px;
 }
+.sidepanel {
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidepanel p {
+  color: white;
+  padding: 8px 8px 8px 32px;
+  font-size: 25px;
+  text-decoration: none;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidepanel a.closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
