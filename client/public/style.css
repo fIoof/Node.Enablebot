@@ -8,7 +8,7 @@
 }
 
 body {
-  background: #f1f3f4;
+  background: white;
 }
 
 #app {
@@ -47,12 +47,12 @@ body {
 .wrapper {
   width: 100%;
   padding: 15px;
-  background: #c1c1c1;
+  background: white;
   opacity: 80%;
 }
 
 .ai {
-  background: #c1c1c1;
+  background: white;
   opacity: 80%;
 }
 .copyimg {
@@ -89,7 +89,7 @@ body {
 }
 
 .ai .profile {
-  background: #f1f3f4;
+  background: white;
 }
 
 .profile img {
@@ -100,7 +100,7 @@ body {
 
 .message {
   flex: 1;
-  background: #c1c1c1;
+  background: white;
   color: black;
   font-size: 20px;
   margin-top: 5px;
