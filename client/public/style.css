@@ -14,7 +14,7 @@ body {
 #app {
   width: 100vw;
   height: 100vh;
-  background: #2b2d2e;
+  background: white;
 
   display: flex;
   flex-direction: column;
@@ -98,7 +98,7 @@ body {
 .message {
   flex: 1;
 
-  color: black;
+  color: #f1f3f4;
   font-size: 20px;
   margin-top: 5px;
   max-width: 100%;
@@ -129,7 +129,7 @@ form {
 textarea {
   width: 100%;
 
-  color: black;
+  color: #f1f3f4;
   font-size: 18px;
   resize: none;
   padding: 10px;
