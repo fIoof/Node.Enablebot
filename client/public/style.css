@@ -8,13 +8,13 @@
 }
 
 body {
-  background: #343541;
+  background: white;
 }
 
 #app {
   width: 100vw;
   height: 100vh;
-  background: #189ADE;
+  background: #f1f3f4;
 
   display: flex;
   flex-direction: column;
@@ -47,10 +47,13 @@ body {
 .wrapper {
   width: 100%;
   padding: 15px;
+  background: white;
+  opacity: 80%;
 }
 
 .ai {
-  background: #8dd0f3;
+  background: white;
+  opacity: 80%;
 }
 .copyimg {
   width: 30px;
@@ -86,7 +89,9 @@ body {
 }
 
 .ai .profile {
-  background: #d2edfa;
+  background: white;
+  border: black 1px solid;
+
 }
 
 .profile img {
@@ -97,14 +102,14 @@ body {
 
 .message {
   flex: 1;
-
+  background: white;
   color: black;
   font-size: 20px;
   margin-top: 5px;
   max-width: 100%;
   overflow-x: scroll;
-  white-space: pre-wrap; 
-
+  white-space: pre-wrap;
+  border-radius: 5px;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -119,7 +124,7 @@ form {
   max-width: 1280px;
   margin: 0 auto;
   padding: 10px;
-  background: #8dd0f3;
+  background: #f1f3f4;
   
   display: flex;
   flex-direction: row;
@@ -133,7 +138,7 @@ textarea {
   font-size: 18px;
   resize: none;
   padding: 10px;
-  background: transparent;
+  background: #c1c1c1;
   border-radius: 5px;
   border: none;
   outline: none;
@@ -150,49 +155,3 @@ form img {
   width: 30px;
   height: 30px;
 }
-.sidepanel  {
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  height: 250px;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
-
-.sidepanel a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidepanel a:hover {
-  color: #f1f1f1;
-}
-
-.sidepanel .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-}
-
-.openbtn {
-  font-size: 20px;
-  cursor: pointer;
-  background-color: #111;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-}
-
-.openbtn:hover {
-  background-color:#444;
-}
-

@@ -1,12 +1,10 @@
 import bot from './assets/bot.png'; //Imports Icons for us to use
 import user from './assets/user.svg';
-import copy from './assets/copy.svg';
-
+import copy from './assets/copy.svg'; //attach to img SRC in chatstripe for copy function "<img class="copyimg" src="" onclick="copyToClipboard('${uniqueId}')"> "
 const form = document.querySelector('form'); //targets HTML element it being the form
 const chatContainer = document.querySelector('#chat_container'); // selects the HTML element "chat_container"
 const chatHistory = new Map();
 let loadInterval;
-
 function loader(element){ // Loading dots when thinking about awnswer
     element.textContent = ''; //ensures its empty at the start
 
@@ -38,7 +36,7 @@ function generateUniqueId() { //Creates a unique ID for each bit of text
 }
 
 
-function chatStripe(isAi, value, uniqueId, uniqueId2) {
+function chatStripe(isAi, value, uniqueId,) {
     if (isAi) {
         return (             // checks if its ai
             `
@@ -49,7 +47,6 @@ function chatStripe(isAi, value, uniqueId, uniqueId2) {
                         <img src="${bot}" alt="bot" /> 
         </div> 
          <div class="message" id=${uniqueId}>${value}</div>
-         <img class="copyimg" src="${copy}" onclick="copyToClipboard('${uniqueId}')" />      
         </div>
         </div>
         `
@@ -64,7 +61,6 @@ function chatStripe(isAi, value, uniqueId, uniqueId2) {
                         <img src="${user}" alt="user" />
                     </div>
                     <div class="message" id="${uniqueId}">${value}</div>
-                    <img class="copyimg" src="${copy}" onclick="copyToClipboard('${uniqueId}')">
                 </div>
             </div>
         `

@@ -22,7 +22,7 @@ app.post('/', async (req, res) => {
     try{
         const prompt = req.body.prompt;
         const response = await openai.createCompletion({  //a function that accepts an object
-            model: "text-davinci-003",
+            model: "code-davinci-002",
             prompt: `${prompt}`,
             temperature: 0, //means the risk of response 0 being no risk of going beyond what it knows 10 could be a very random and uneducated
             max_tokens: 4000,
