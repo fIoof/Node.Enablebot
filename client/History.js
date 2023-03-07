@@ -3,6 +3,7 @@ let btn = document.querySelector('.toggle');
 let btnst = true;
 btn.onclick = function() {
     if(btnst === true) {
+        console.log('Opening sidebar...');
         document.querySelector('.toggle span').classList.add('toggle');
         document.getElementById('sidebar').classList.add('sidebarshow');
         btnst = false;
