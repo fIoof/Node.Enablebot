@@ -171,7 +171,13 @@ button {
   display:block;
   position:relative;
   coursor:pointer;
+  z-index: 0;
 }
+.header_in {
+  position: relative;
+  z-index: 1;
+}
+
 
 .toggle span:before,
 .toggle span:after {
