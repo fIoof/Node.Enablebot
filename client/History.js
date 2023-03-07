@@ -7,6 +7,7 @@ btn.onclick = function() {
         document.querySelector('.toggle span').classList.add('toggle');
         document.getElementById('sidebar').classList.add('sidebarshow');
         btnst = false;
+        toggleSidebar();
     }else {
         console.log('Closing sidebar...');
         document.querySelector('.toggle span').classList.remove('toggle');

@@ -4,6 +4,8 @@ import copy from './assets/copy.svg'; //attach to img SRC in chatstripe for copy
 const form = document.querySelector('form'); //targets HTML element it being the form
 const chatContainer = document.querySelector('#chat_container'); // selects the HTML element "chat_container"
 const chatHistory = new Map();
+const historyLog = document.querySelector('textarea[name=historyC]');
+historyLog.value = '';
 let loadInterval;
 function loader(element){ // Loading dots when thinking about awnswer
     element.textContent = ''; //ensures its empty at the start
@@ -138,3 +140,14 @@ form.addEventListener('keyup',(e) => { //listens for when we press the enter key
         handleSubmit(e);
     }
 })
+export function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('active');
+    const historyLog = document.querySelector('textarea[name="historyC"]');
+
+    // Clear the history log
+    historyLog.value = '';
+    for (const [id, message] of chatHistory) {
+        historyLog.value += `${id}: ${message.value}\n`;
+    }
+}
