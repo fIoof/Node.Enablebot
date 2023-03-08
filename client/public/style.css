@@ -169,7 +169,7 @@ button {
   height:3px;
   background:#555;
   display:block;
-  position:relative;
+  position:absolute;
   coursor:pointer;
   z-index: 1;
 }
