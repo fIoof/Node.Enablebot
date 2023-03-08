@@ -148,6 +148,6 @@ export default function toggleSidebar() {
     // Clear the history log
     historyLog.value = '';
     for (const [id, message] of chatHistory) {
-        historyLog.value += `${id}: ${message.value}\n`;
+        historyLog.value += `${message.value}\n`;
     }
 }
