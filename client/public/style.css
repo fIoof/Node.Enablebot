@@ -217,10 +217,10 @@ button {
 
 .sidebar {
   background:#fff;
-  width:235px;
+  width:1000px;
   position:fixed;
   top:0;
-  left:-235px;
+  left:-1000px;
   height:100%;
   box-shadow:0 2px 8px rgba(0,0,0,0.2);
   padding-top:90px;
