@@ -133,7 +133,8 @@ form {
   gap: 10px;
 }
 .historyCArea {
-
+  margin-top: 0px;
+  padding-bottom: 200px;
 }
 textarea {
   width: 100%;
