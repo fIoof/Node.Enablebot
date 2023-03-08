@@ -58,7 +58,6 @@ body {
 .copyimg {
   width: 30px;
   height: 30px;
-  margin-top: 150px;
   
 }
 .copyimg:hover{
@@ -158,6 +157,7 @@ button {
 form img {
   width: 30px;
   height: 30px;
+  margin-top: 150px;
 }
 button {
   background:transparent;
