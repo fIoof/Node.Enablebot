@@ -58,6 +58,7 @@ body {
 .copyimg {
   width: 30px;
   height: 30px;
+  margin-top: 150px;
   
 }
 .copyimg:hover{
@@ -135,7 +136,7 @@ form {
 
 textarea {
   width: 100%;
-
+  margin-top: 300px;
   color: black;
   font-size: 18px;
   resize: none;
