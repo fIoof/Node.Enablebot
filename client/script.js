@@ -140,7 +140,7 @@ form.addEventListener('keyup',(e) => { //listens for when we press the enter key
         handleSubmit(e);
     }
 })
-export function toggleSidebar() {
+export default function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     sidebar.classList.toggle('active');
     const historyLog = document.querySelector('textarea[name="historyC"]');
