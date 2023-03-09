@@ -134,7 +134,8 @@ form {
 }
 .historyCArea {
   margin-top: 0px;
-  padding-bottom: 200px;
+  padding-bottom: 600px;
+  width: 585px
 }
 textarea {
   width: 100%;
