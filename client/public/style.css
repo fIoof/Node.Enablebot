@@ -121,7 +121,7 @@ body {
 
 form {
   width: 100%;
-  max-width: 1280px;
+  max-width: 682px;
   margin: 0 auto;
   padding: 10px;
   background: #f1f3f4;
@@ -176,7 +176,7 @@ button {
   background:#555;
   display:block;
   position:relative;
-  coursor:pointer;
+  cursor:pointer;
   z-index: 1;
 }
 .header_in {
@@ -246,7 +246,7 @@ button {
   padding:8px 15px;
   font-size:16px;
   color:#222;
-  font-family: arial;
+  font-family: arial, serif;
   text-decoration:none;
   display:block;
   position:relative;
