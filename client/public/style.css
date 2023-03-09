@@ -18,7 +18,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: end;
+  justify-content: space-between;
 }
 
 #chat_container {
@@ -148,6 +148,7 @@ textarea {
   border: none;
   outline: none;
   max-height: 200px;
+  position: relative;
 }
 
 button {
