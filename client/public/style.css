@@ -129,6 +129,7 @@ form {
   align-items: center;
   justify-content: center;
   gap: 10px;
+  height: 150px;
 }
 .historyCArea {
   margin-top: 0px;
@@ -148,6 +149,7 @@ textarea {
   outline: none;
   max-height: 200px;
   position: relative;
+  bottom: 210px;
 }
 
 button {
