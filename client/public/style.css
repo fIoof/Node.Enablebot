@@ -121,7 +121,7 @@ body {
 form {
   width: 100%;
   max-width: 682px;
-  margin: 0 auto;
+  margin-top: 50px;
   padding: 10px;
   background: #f1f3f4;
   display: flex;
@@ -129,6 +129,7 @@ form {
   align-items: center;
   justify-content: center;
   gap: 10px;
+  height: 150px;
 }
 .historyCArea {
   margin-top: 0px;
