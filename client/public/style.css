@@ -131,6 +131,9 @@ form {
   gap: 10px;
   height: 150px;
 }
+body{
+  margin: 0px;
+}
 .historyCArea {
   margin-top: 0px;
   padding-bottom: 600px;
