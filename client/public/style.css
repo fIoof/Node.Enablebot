@@ -149,6 +149,7 @@ textarea {
   outline: none;
   max-height: 200px;
   position: relative;
+  bottom: 93px;
 }
 
 button {
@@ -161,6 +162,8 @@ button {
 form img {
   width: 30px;
   height: 30px;
+  position: relative;
+  bottom: 93px;
 }
 button {
   background:transparent;
