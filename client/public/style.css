@@ -136,8 +136,7 @@ body{
   margin: 0px;
 }
 .historyCArea {
-  margin-top: 0px;
-  padding-bottom: 600px;
+  padding-bottom: 700px;
   width: 585px
 }
 textarea {
@@ -231,7 +230,7 @@ button {
 
 .sidebar {
   background:#fff;
-  width:1000px;
+  width:600px;
   position:fixed;
   top:0;
   left:-1000px;
