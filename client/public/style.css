@@ -128,7 +128,7 @@ form {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  height: 150px;
+  height: 75px;
   position: fixed;
   bottom: 0px;
 }
@@ -167,7 +167,7 @@ form img {
   width: 30px;
   height: 30px;
   position: relative;
-  bottom: 109px;
+  bottom: 145px;
 }
 button {
   background:transparent;
