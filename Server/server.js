@@ -22,9 +22,8 @@ app.post('/', async (req, res) => {
     try{
         const prompt = req.body.prompt;
         const response = await openai.createCompletion({  //a function that accepts an object
-            model: "text-davinci-edit-001",
+            model: "gpt-3.5-turbo",
             prompt: `${prompt}`,
-            instruction: "Make this text sound like Homer simpson",
             temperature: 0, //means the risk of response 0 being no risk of going beyond what it knows 10 could be a very random and uneducated
             max_tokens: 4000,
             top_p: 1,
