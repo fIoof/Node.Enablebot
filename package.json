@@ -6,7 +6,7 @@
   "scripts": {
     "server": "nodemon server",
     "dev": "vite",
-    "build": "npx vite build",
+    "build": "npm vite build",
     "serve": "vite preview"
   },
   "keywords": [],
