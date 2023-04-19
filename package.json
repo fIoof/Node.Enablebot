@@ -4,7 +4,10 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "server": "nodemon server"
+    "server": "Server/node_modules/.bin/nodemon server",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +18,8 @@
     "express": "^4.18.2",
     "nodemon": "^2.0.20",
     "openai": "^3.1.0"
+  },
+  "devDependencies": {
+    "vite": "^4.2.2"
   }
 }
