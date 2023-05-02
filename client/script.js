@@ -124,7 +124,7 @@ const handleSubmit = async (e) => {
             chatHistory.set(uniqueId, { id: uniqueId, value: parsedData });
         };
         copyText()
-        typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT reponse data
+        typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT response data
         console.log(chatHistory)
     } else {
         const err = await response.text();

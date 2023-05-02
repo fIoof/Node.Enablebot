@@ -4,10 +4,10 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "server": "nodemon --experimental-specifier-resolution=node server.js",
-    "dev": "vite",
+    "server": "../node_modules/.bin/nodemon --experimental-specifier-resolution=node server.js",
+    "dev": "../node_modules/.bin/vite",
     "build": "./vercel-build.sh",
-    "serve": "vite preview"
+    "serve": "../node_modules/.bin/vite preview"
   },
   "keywords": [],
   "author": "",
