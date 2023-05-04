@@ -1,4 +1,4 @@
-import bot from './assets/bot.png; //Imports Icons for us to use
+import bot from './assets/bot.png';
 import user from './assets/user.svg';
 const form = document.querySelector('form'); //targets HTML element it being the form
 const chatContainer = document.querySelector('#chat_container'); // selects the HTML element "chat_container"
