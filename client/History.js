@@ -1,4 +1,4 @@
-import toggleSidebar from './script.js'
+import toggleSidebar from '../../../OneDrive/PC files 2016/Documents/client/script.js'
 let btn = document.querySelector('.toggle');
 let btnst = true;
 btn.onclick = function() {
