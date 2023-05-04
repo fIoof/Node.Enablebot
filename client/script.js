@@ -1,6 +1,6 @@
-import bot from '../assets/bot.png'; //Imports Icons for us to use
-import user from '../assets/user.svg';
-import copy from '../assets/copy.svg'; //attach to img SRC in chatstripe for copy function "<img class="copyimg" src="" onclick="copyToClipboard('${uniqueId}')"> "
+import bot from './assets/bot.png'; //Imports Icons for us to use
+import user from './assets/user.svg';
+import copy from './assets/copy.svg'; //attach to img SRC in chatstripe for copy function "<img class="copyimg" src="" onclick="copyToClipboard('${uniqueId}')"> "
 const form = document.querySelector('form'); //targets HTML element it being the form
 const chatContainer = document.querySelector('#chat_container'); // selects the HTML element "chat_container"
 const chatHistory = new Map();
