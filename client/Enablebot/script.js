@@ -1,6 +1,6 @@
-import bot from './assets/bot.png'; //Imports Icons for us to use
-import user from './assets/user.svg';
-import copy from './assets/copy.svg'; //attach to img SRC in chatstripe for copy function "<img class="copyimg" src="" onclick="copyToClipboard('${uniqueId}')"> "
+import bot from '../assets/bot.png'; //Imports Icons for us to use
+import user from '../assets/user.svg';
+import copy from '../assets/copy.svg'; //attach to img SRC in chatstripe for copy function "<img class="copyimg" src="" onclick="copyToClipboard('${uniqueId}')"> "
 const form = document.querySelector('form'); //targets HTML element it being the form
 const chatContainer = document.querySelector('#chat_container'); // selects the HTML element "chat_container"
 const chatHistory = new Map();
@@ -105,7 +105,7 @@ const handleSubmit = async (e) => {
 
     loader(messageDiv);
     // fetch data from server -> bot's response
-    const response = await fetch('https://enablebot.onrender.com/', {
+    const response = await fetch('https://enablebot.onrender.com', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

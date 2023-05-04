@@ -1,4 +1,4 @@
-import toggleSidebar from './script'
+import toggleSidebar from './script.js'
 let btn = document.querySelector('.toggle');
 let btnst = true;
 btn.onclick = function() {
