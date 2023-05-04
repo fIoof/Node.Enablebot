@@ -109,7 +109,7 @@
     "vite": "^4.3.4"
   },
   "scripts": {
-    "server": "Server"
+    "server": "server.js"
   },
   "keywords": [],
   "author": "",
