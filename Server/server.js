@@ -8,7 +8,6 @@ const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
 })
 const openai = new OpenAIApi(configuration);
-const cors = require('cors');
 const app = express();
 app.use(cors()); //allows us to make a call from the front end
 app.use(express.json()); //allows us to parse JSON from the front end to the backend
