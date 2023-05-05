@@ -23,7 +23,7 @@ function loader(element) {
         if (element.textContent === '....') {
             element.textContent = '';
         }
-    }, 300);
+    }, 500);
 }
 
 // Type text in an element with a typing effect
