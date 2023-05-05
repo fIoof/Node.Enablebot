@@ -1,61 +1,68 @@
+// Import images for user and bot avatars
 import bot from './assets/bot.png';
 import user from './assets/user.svg';
-const form = document.querySelector('form'); //targets HTML element it being the form
-const chatContainer = document.querySelector('#chat_container'); // selects the HTML element "chat_container"
+
+// Get references to the form and chat container elements in the HTML
+const form = document.querySelector('form');
+const chatContainer = document.querySelector('#chat_container');
+
+// Initialize a map to store chat history and a reference to a textarea for displaying chat history
 const chatHistory = new Map();
 const historyLog = document.querySelector('textarea[name=historyC]');
 historyLog.value = '';
+
+// Initialize a variable to store the loading interval
 let loadInterval;
-function loader(element){ // Loading dots when thinking about awnswer
-    element.textContent = ''; //ensures its empty at the start
+
+// Add loading dots to an element while waiting for the bot's response
+function loader(element) {
+    element.textContent = '';
 
     loadInterval = setInterval(() => {
         element.textContent += '.';
         if (element.textContent === '....') {
             element.textContent = '';
         }
-    },300) //every 300 miliseconds adds a dot 3 times and then clears the text
-
+    }, 300);
 }
-function typeText(element,text){ // this allows the response of the bot to type out slowly making it seem more human
+
+// Type text in an element with a typing effect
+function typeText(element, text) {
     let index = 0;
 
     let interval = setInterval(() => {
-        if(index < text.length) {
+        if (index < text.length) {
             element.innerHTML += text.charAt(index);
             index++;
-        }else
-            clearInterval(interval)
-    },20)
+        } else {
+            clearInterval(interval);
+        }
+    }, 20);
 }
-function generateUniqueId() { //Creates a unique ID for each bit of text
+
+// Generate a unique ID for chat messages
+function generateUniqueId() {
     const timestamp = Date.now();
     const randomNumber = Math.random();
     const hexadecimalString = randomNumber.toString(16);
 
-    return `id-${timestamp}-${hexadecimalString}`; //creates the random ID
+    return `id-${timestamp}-${hexadecimalString}`;
 }
 
-
-function chatStripe(isAi, value, uniqueId,) {
+// Generate the HTML for a chat message (either user or bot)
+function chatStripe(isAi, value, uniqueId) {
     if (isAi) {
-        return (             // checks if its ai
-            `
-        <div class="wrapper ai"> 
+        return `
+        <div class="wrapper ai">
             <div class="chat">
                 <div class="profile">
-                    <Img
-                        <img src="${bot}" alt="bot" /> 
-        </div> 
-         <div class="message" id=${uniqueId}>${value}</div>
-        </div>
-        </div>
-        `
-            // this creates the message that is generated
-        )
-    }else{
-        return(
-            `
+                    <img src="${bot}" alt="bot" />
+                </div>
+                <div class="message" id=${uniqueId}>${value}</div>
+            </div>
+        </div>`;
+    } else {
+        return `
             <div class="wrapper">
                 <div class="chat">
                     <div class="profile">
@@ -63,88 +70,90 @@ function chatStripe(isAi, value, uniqueId,) {
                     </div>
                     <div class="message" id="${uniqueId}">${value}</div>
                 </div>
-            </div>
-        `
-        )}
-
+            </div>`;
+    }
 }
-window.copyToClipboard = async function(id) {
+
+// Copy the content of a chat message with the specified ID to the clipboard
+window.copyToClipboard = async function (id) {
     try {
         const chatStripe = chatHistory.get(id);
         if (chatStripe) {
             await navigator.clipboard.writeText(chatStripe.value);
             console.log('Content copied to clipboard');
-            //text is copied succesfully
         }
-    } catch (err){
-        console.error('Failed to copy: ', err);
-        //rejected and failed to copy
+    } catch (err) {
+        console.error('Failed to copy:', err);
     }
 }
+
+// Handle form submission: send a request to the server and handle the response
 const handleSubmit = async (e) => {
-    e.preventDefault(); //prevents the default behaviour of the browser
+    e.preventDefault();
 
     const data = new FormData(form);
     const uniqueId = generateUniqueId();
-    const uniqueId2 = generateUniqueId()
-    const usercopyText = () => {
-        chatHistory.set(uniqueId2, {id: uniqueId2, value: data.get('prompt')});
-    }
-    usercopyText()
-    // User's Chatstripe
-    chatContainer.innerHTML += chatStripe(false, data.get('prompt'),uniqueId2); //if user passes the data from the form
-    form.reset(); // resets the data in the form so a new awnswer can be asked.
+    const uniqueId2 = generateUniqueId();
 
-    //Bot's Chatstripe
-    chatContainer.innerHTML += chatStripe(true, " ", uniqueId); // is empty as it is filling up as it is loading
+    // Add user's chat message to chat history
+    chatHistory.set(uniqueId2, {id: uniqueId2, value: data.get('prompt')});
 
-    chatContainer.scrollTop = chatContainer.scrollHeight; //this puts the message in view
+    // Add user's chat message to the chat container
+    chatContainer.innerHTML += chatStripe(false, data.get('prompt'), uniqueId2);
+    form.reset();
 
-    const messageDiv = document.getElementById(uniqueId); //this fetches the message via a unique ID
-
+    // Add bot's chat message (empty) to the chat container and start the loader
+    chatContainer.innerHTML += chatStripe(true, " ", uniqueId);
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+    const messageDiv = document.getElementById(uniqueId);
     loader(messageDiv);
-    // fetch data from server -> bot's response
-    const response = await fetch('https://enablebot.onrender.com', {
+    // Fetch data from the server (bot's response)
+    const response = await fetch('http://localhost:5000/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
-            'Access-Control-Allow-Origin: *'
         },
         body: JSON.stringify({
-            prompt: data.get('prompt') //this is where the data with the message
+            prompt: data.get('prompt')
         })
-    })
-    clearInterval(loadInterval)
-    messageDiv.innerHTML = ''; //resets the message div to an empty string
+    });
 
+// Clear the loading interval and reset the message div content
+    clearInterval(loadInterval);
+    messageDiv.innerHTML = '';
+
+// If the response is successful, display the bot's message with a typing effect
     if (response.ok) {
-        const data = await response.json(); //this gives us the actual response
+        const data = await response.json();
         const parsedData = data.bot.trim();
-        const copyText = () => {
-            chatHistory.set(uniqueId, { id: uniqueId, value: parsedData });
-        };
-        copyText()
-        typeText(messageDiv, parsedData); //ParsedData holds the ChatGPT response data
-        console.log(chatHistory)
+
+        // Add bot's chat message to chat history
+        chatHistory.set(uniqueId, {id: uniqueId, value: parsedData});
+
+        // Display bot's chat message with a typing effect
+        typeText(messageDiv, parsedData);
+        console.log(chatHistory);
     } else {
         const err = await response.text();
 
+        // Display an error message if the response is unsuccessful
         messageDiv.innerHTML = "Something went wrong";
         alert(err);
     }
-
-}
-form.addEventListener('submit', handleSubmit); //is a listener for a submit event
-form.addEventListener('keyup',(e) => { //listens for when we press the enter key
-    if (e.keyCode === 13) { // 13 = Enter key
+};
+// Add event listeners to the form for submitting and pressing the Enter key
+form.addEventListener('submit', handleSubmit);
+form.addEventListener('keyup', (e) => {
+    if (e.keyCode === 13) {
         handleSubmit(e);
     }
-})
+});
+
+// Function to toggle the visibility of a sidebar element and update the chat history in a textarea
 export default function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     sidebar.classList.toggle('active');
     const historyLog = document.querySelector('textarea[name="historyC"]');
-
     // Clear the history log
     historyLog.value = '';
     for (const [id, message] of chatHistory) {
