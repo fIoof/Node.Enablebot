@@ -108,7 +108,7 @@ const handleSubmit = async (e) => {
     const messageDiv = document.getElementById(uniqueId);
     loader(messageDiv);
     // Fetch data from the server (bot's response)
-    const response = await fetch('https://node-enablebot-24qam5w7z-fioof.vercel.app/', {
+    const response = await fetch('https://enablebot.onrender.com', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
